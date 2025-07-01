@@ -1,0 +1,69 @@
+You are a senior React + Tailwind engineer.  
+Add TWO new sections to the BuildConform landing page:
+
+════════════════════════════════════════════════════════════
+SECTION A — “Our Solution”
+════════════════════════════════════════════════════════════
+• Wrapper  max-w-7xl mx-auto px-6 py-24 lg:py-32.
+
+• Intro badge (uppercase, brand border):  “Our Solution”.
+
+• H2  lg:text-4xl  “AI-driven compliance, from upload to approval.”
+
+• 3-column responsive layout (stack ≤md):
+
+  1. **How it works (high-level)**  
+     ☐ Upload drawings (PDF/DWG) →  
+     ☐ AI parses local amendments →  
+     ☐ Checklist & pass/fail.
+
+  2. **Key features** (brand highlight bullet list)  
+     • Compliance Co-pilot (live chat + code references)  
+     • Instant design validation (sub-1 min)  
+     • Jurisdiction auto-mapping (540+ regions)  
+     • One-click export to PDF/CSV.
+
+  3. **Relevant expertise & efficiency**  
+     – Built by ex-permit reviewers & ML PhDs.  
+     – 93 % agreement with human plan-checkers.  
+     – Cuts re-submittals to zero.
+
+• “Use-case switcher” tabs (Headless-UI Tabs):
+
+  Architect   |   Engineer   |   Code Official
+
+  Each tab panel shows a 3-line scenario copy + mini screenshot placeholder
+  (`/usecases/architect.jpg`, `/usecases/engineer.jpg`, `/usecases/reviewer.jpg`)
+  with subtle zoom on hover.
+
+════════════════════════════════════════════════════════════
+SECTION B — “Need answers?  We’ve got you.” (FAQ + Contact)
+════════════════════════════════════════════════════════════
+• Dark gradient panel bg-brand-500/5 rounded-2xl shadow-inner.
+
+• Two columns ≥lg, stacked ≤md:
+
+  LEFT  –  Accordion FAQ (Headless-UI `Disclosure`), 4 seeds:  
+          1. “What file types do you support?”  
+          2. “Which jurisdictions are covered?”  
+          3. “Will city reviewers accept the report?”  
+          4. “How do I join the beta?”  
+
+  RIGHT –  Contact card  
+          • h3 “Still have questions?”  
+          • p  “Email us or book a quick call.”  
+          • Mailto button   class: bg-brand-500 px-5 py-3 rounded-md font-medium  
+             href="mailto:team@buildconform.com"  
+          • Small text:  “Replies within 24 h.”
+
+• Entire section `py-24 lg:py-32`.
+
+════════════════════════════════════════════════════════════
+Implementation details
+════════════════════════════════════════════════════════════
+• Name components `SolutionSection.jsx` and `FAQContactSection.jsx`; export default.  
+• Import and insert into `App.jsx` **below BenefitsGrid and above TeamGrid**.  
+• Use Heroicons outline icons (`LightBulbIcon`, `BoltIcon`, etc.) for bullets.  
+• Animate tab-panel switch with framer-motion opacity/slide.  
+• No new npm deps beyond headlessui, heroicons, framer-motion (already present).  
+• Output ONLY the JSX/Tailwind code for the two components plus their import lines for `App.jsx`. No extra commentary.

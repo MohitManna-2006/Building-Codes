@@ -1,0 +1,49 @@
+You are a senior React + Tailwind engineer.
+Extend the current BuildConform landing page by **adding, not replacing**, the following missing sections and elements.
+
+──────────────────────────────  SHARED STYLE  ──────────────────────────────
+• Dark-mode first (bg-surface #0F111A, brand-purple #8B5CF6, accent-green #34D399).
+• Container: max-w-7xl mx-auto px-6.
+• Use framer-motion fade-ups (already installed).
+• No extra npm packages.
+
+──────────────────────────────  NEW SECTIONS  ──────────────────────────────
+1. **Improved Header / Navigation**  
+   *If these items aren’t already present, inject them into TopBar.jsx.*  
+   • Add nav links: Solution, How It Works, About, Blog, Contact.  
+   • Add a high-contrast **“Request Early Access”** button (bg-brand-500 hover:bg-brand-600).  
+   • Keep existing logo & mobile drawer logic.
+
+2. **Hero upgrade (if email form is missing)**  
+   • Keep current headline & sub-headline.  
+   • **Add** email-capture form (`<input type="email">` + Submit) under CTAs, class: rounded-xl bg-surface/70 ring-1 ring-white/10.
+
+3. **Problem Section**  *(create `ProblemSection.jsx` only if it doesn’t exist)*  
+   • Title: “The Compliance Bottleneck Costing Billions”.  
+   • Grid of 3 pain cards (delay, rework cost, rule overload) with icons + stats.
+
+4. **Solution Section**  *(create `SolutionSection.jsx` if not present)*  
+   • Two-column layout: copy left, illustrative image right.  
+   • Bullet list for: Real-time Compliance Co-pilot, Instant Design Validation.  
+   • Sub-accordion “Use-Case Scenarios” with Architect | Engineer | Code Official panes (Headless-UI Tabs).
+
+5. **Benefits Grid**  
+   • 4 cards with metrics: 99 % faster checks, Prevent costly rework, 540 + jurisdictions, 93 % reviewer agreement.
+
+6. **How It Works**  
+   • 3-step vertical process ≤md, horizontal ≥lg. Steps: Upload → AI Review → Permit Checklist.
+
+7. **CTA Section** *(only if a second CTA is missing)*  
+   • Headline: “Be First to Transform Your Compliance Process”.  
+   • Email capture + expected launch timeline (Q4 2025).
+
+8. **Footer enhancement**  
+   • Ensure contact email, social icons, and Privacy / Terms links exist.  
+   • If missing, add © {year} BuildConform Inc.
+
+────────────────────────  IMPLEMENTATION DETAILS  ────────────────────────
+• Create new components only for sections that don’t already exist:
+     ProblemSection.jsx, SolutionSection.jsx, BenefitsGrid.jsx, HowItWorks.jsx, SecondCTA.jsx.
+• Export each as default and import them in App.jsx **below existing Hero and above Testimonials/FAQ**.
+• Do **not** modify existing Hero copy, upload widget, or previously coded sections.
+• Deliver only JSX/Tailwind code for the new components and the App.jsx import lines. No prose.

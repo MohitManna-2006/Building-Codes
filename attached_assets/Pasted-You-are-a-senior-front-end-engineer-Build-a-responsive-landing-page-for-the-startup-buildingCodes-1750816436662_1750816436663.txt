@@ -1,0 +1,50 @@
+You are a senior front-end engineer. Build a responsive landing page for the startup **buildingCodes** (automated code-compliance for construction). Tech stack: React + Tailwind.
+
+Brand palette  
+  • bg-surface #0f111a (dark)  
+  • brand-purple #8B5CF6  
+  • accent-green #34D399  
+
+🔑 Page sections & content
+1. Hero  
+   - Headline: “Submit plans. Get code compliance in minutes.”  
+   - Sub-text: “Building permit checks automated for every US jurisdiction.”  
+   - Large CTA button: “Try a 30-second demo” → id="demo" anchor.  
+   - Right side animated blueprint SVG that turns green with a ✓ after 3 s (use CSS keyframes).
+
+2. Pain vs Gain strip (3 cols)  
+   a) “8 weeks → 30 minutes”  
+   b) “300-page codes → AI ruleset”  
+   c) “$25 k resubmittals → First-pass approval”  
+   Each number count-up on scroll (intersection observer).
+
+3. 1-minute demo reel  
+   - Autoplay muted looping video (`/demo-reel.webm`).  
+   - Overlay caption “Real speed, real codes.”
+
+4. Trust signals bar  
+   - Firm logos placeholder row (`/logos/*.svg`).  
+   - Stat chips animating: Plans analysed 2.3 M+, Jurisdictions 540+, Reviewer agreement 93 %.
+
+5. How-it-Works (3 step grid) with heroicons.
+
+6. Role switcher  
+   - Tabs Architect | Code Official (use Headless UI Tabs).  
+   - Copy & CTA text swap based on tab.
+
+7. Testimonials carousel (3 slides) using framer-motion.
+
+8. Integrations bar: Revit, AutoCAD, Procore logos + “Connect” buttons.
+
+9. Sticky live sandbox upload card bottom-right (uses already-made `<DemoCard />`).
+
+10. Final CTA gradient section before footer: “Ready for painless permits?” email field + CTA.
+
+General requirements  
+- Mobile-first, then lg: w/o doubling markup.  
+- Tailwind dark mode default.  
+- Prefers max-width `max-w-7xl` for main content, centred.  
+- Use heroicons 24 outline.  
+- Add subtle grid background via CSS `background-image`.  
+- Animations: framer-motion for fade-ups & count-ups.  
+- Deliver as a single React component tree (App.jsx + child components per section).  

@@ -1,0 +1,51 @@
+• Email capture (input + “Join Waitlist” button).  
+• Right side <DemoCard /> upload widget.  
+• Behind widget, CSS key-framed blueprint SVG that turns green ✓.
+
+3. **Problem – “The Compliance Bottleneck Costing Billions”**  
+• 3 pain cards with icon + title + stat line.  
+     – Delays: “8 weeks average permit lag”  
+     – Rework: “$34 B annual re-design cost (US)”  
+     – Complexity: “300+ pages of codes per city”  
+
+4. **Solution**  
+Two-column: copy left, screenshot mock right.  
+• Feature bullets: Real-time Compliance Co-pilot, Instant Design Validation, Auto-jurisdiction mapping.  
+• “See use-case” dropdown shows Architect | Engineer | Reviewer scenario blurbs.
+
+5. **Benefits Grid** (4 cards)  
+• 99 % faster checks • 0 re-submittal fees • 540+ jurisdictions • 93 % reviewer agreement.
+
+6. **How It Works – 3 steps**  
+① Upload drawings → ② AI parses local amendments → ③ Permit-ready checklist.
+
+7. **Product Vision** (placeholder text – to fill later)  
+• Badge “Why we built BuildConform”  
+• Left: timeline Idea → MVP → Beta → Public (dot animation).  
+• Right: illustration placeholder (aspect 4/3).
+
+8. **Register Interest**  
+• Gradient brand card, h3, email input, consent note, submit.
+
+9. **Our Team**  
+• Grid of 4 avatar cards (name, role placeholder). Hover lifts card & ring brand.
+
+10. **FAQ** – accordion (Headless-UI); 4 seed questions.
+
+11. **Final CTA strip**  
+ “Be first to automate your compliance” + email capture, launch Q4 2025 note.
+
+12. **Footer**  
+ • Contact email, social icons, privacy / terms links.
+
+════════════ Technical & meta ════════════
+• Add SEO/meta tags in `<head>` (charset, viewport, og:title, description).  
+• Email form posts to `/api/waitlist` (placeholder fetch).  
+• `useEffect` adds `.scrolled` class to header after 48 px scroll.  
+• Code delivered as:  
+ ├── components/TopBar.jsx  
+ ├── sections/{Hero,Problem,Solution,Benefits,HowItWorks,ProductVision,InterestForm,TeamGrid,FAQ,FinalCTA}.jsx  
+ └── App.jsx (imports in order)  
+• Output **only** JSX/Tailwind code for all components plus minimal index.css additions; no explanatory prose.
+
+Generate full code now.

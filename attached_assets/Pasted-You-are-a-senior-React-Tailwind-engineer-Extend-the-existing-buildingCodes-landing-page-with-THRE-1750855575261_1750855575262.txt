@@ -1,0 +1,53 @@
+You are a senior React + Tailwind engineer.
+Extend the existing buildingCodes landing page with THREE new sections.
+
+============================================================
+1.  Product Vision (placeholder content)
+============================================================
+• Intro badge:  “Why we built buildingCodes”
+  class: inline-block rounded-xl border border-brand-500 px-4 py-1 text-xs uppercase tracking-wide text-brand-500/90
+
+• Two-column layout ≥lg, stacked ≤md.
+  LEFT:
+    - h2 “Our vision for painless permits”
+    - p (placeholder) 200–250 chars lorem.
+    - Horizontal timeline component (4 dots) labelled
+        “Idea → MVP → Beta → Public”.
+        Dot that equals “MVP” glows brand-purple.
+  RIGHT:
+    - Illustration placeholder  (div aspect-[4/3] rounded-xl bg-white/5 ring-1 ring-white/10)
+
+============================================================
+2.  Register Interest
+============================================================
+• Dark gradient card `bg-brand-500/10` rounded-2xl shadow-xl max-w-3xl mx-auto.
+• h3 “Be the first to access buildingCodes AI”
+• Email input + Submit button side by side on ≥sm, stacked ≤sm.
+  – Input: rounded-l-xl flex-1 bg-surface/80 placeholder-gray-400 outline-none p-3
+  – Button: rounded-r-xl bg-brand-500 px-6 font-medium hover:bg-brand-600
+• Small consent note under input: “We’ll only email you about beta access.”
+
+============================================================
+3.  Our Team
+============================================================
+• Section header centered: badge “Team” + h2 “Meet the builders”
+• Responsive grid (2 cols sm, 4 cols lg). Each card:
+
+  <article className="group rounded-xl bg-surface/70 ring-1 ring-white/10
+                      p-6 text-center transition hover:ring-brand-500/60">
+      <img src="/team/placeholder.jpg"
+           className="mx-auto h-20 w-20 rounded-full object-cover ring-2 ring-brand-500/40 group-hover:ring-brand-500"/>
+      <h4 className="mt-4 font-medium text-white">First Last</h4>
+      <p  className="text-xs text-gray-400">Role placeholder</p>
+  </article>
+
+• Hard-code 4 sample members; images can be generic `/team/avatar1.jpg` etc.
+
+============================================================
+Implementation details
+============================================================
+• Each section in its own React component (ProductVision.jsx, InterestForm.jsx, TeamGrid.jsx) and export default.
+• Import and insert in App.jsx below <Testimonials /> and above <FAQ />.
+• All sections use max-w-7xl mx-auto px-6 py-24 lg:py-32; dark-mode Tailwind utilities.
+• No extra npm packages required – only React, Tailwind, Heroicons (already installed).
+• Output ONLY the JSX/React code for the three components, plus the import lines to add in App.jsx. No explanatory text.

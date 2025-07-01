@@ -1,0 +1,32 @@
+You are a senior React + Tailwind engineer.  
+Add a **Lead-Capture** section to the BuildConform landing page.
+
+────────────────────────────  SPEC  ────────────────────────────
+• Dark card, brand border-glow, max-w-3xl mx-auto px-8 py-16 rounded-3xl bg-surface/80 ring-1 ring-brand-500/30 shadow-xl.
+• Left side (≥lg) : hero illustration placeholder (SVG blueprint fades in with framer-motion opacity slide-up).
+• Right side : form stack (Name, Company, Email) – each input full-width, rounded-xl, bg-surface/60, ring-1 ring-white/10, focus:ring-brand-500.
+• Primary CTA button:  “Join Beta Waitlist →”  (bg-brand-500 hover:bg-brand-600, subtle arrow slide).
+• Micro-copy under button:  “We reply within 24 h. No spam.”
+• Success toast (bottom-center, framer-motion) “Thanks {name}! We’ll be in touch.” disappears after 4 s.
+
+─────────────────────  DATA STORAGE REQUIREMENT  ─────────────────────
+• On submit, write `{name, company, email, ts}` to `/repository/waitlist.json` (create file if missing).
+  – Use Node fs/promises in a simple `api/saveLead.js` handler.  
+  – During local dev, stub with `console.log(lead)` if fs fails (browser env).
+
+──────────────────────────  COMPONENT API  ───────────────────────────
+• File structure:
+   ├─ api/saveLead.js          (export async saveLead(obj))
+   └─ components/LeadCapture.jsx  (default export)
+
+• LeadCapture handles its own form state, validation (required, basic email regex), POSTs to saveLead, shows toast.
+
+────────────────────────  VISUAL / INTERACTION  ──────────────────────
+• On focus, input label floats upward (peer-placeholder-shown trick).  
+• Brand-colored progress ring over CTA while awaiting response.  
+• Section animates into view with IntersectionObserver fade-up.
+
+──────────────────────────────  DELIVER  ─────────────────────────────
+• Provide full code for `api/saveLead.js` and `components/LeadCapture.jsx` only.  
+• Indicate single import line to add `<LeadCapture />` just above the footer in App.jsx.  
+• No explanatory prose, output pure code blocks.
