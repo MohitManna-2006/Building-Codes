@@ -41,8 +41,10 @@ export class MemStorage implements IStorage {
   async createWaitlistEntry(insertEntry: InsertWaitlistEntry): Promise<WaitlistEntry> {
     const id = this.currentWaitlistId++;
     const entry: WaitlistEntry = { 
-      ...insertEntry, 
-      id, 
+      id,
+      name: insertEntry.name,
+      company: insertEntry.company || null,
+      email: insertEntry.email,
       createdAt: new Date() 
     };
     this.waitlistEntries.set(id, entry);
