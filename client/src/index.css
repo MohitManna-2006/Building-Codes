@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* Custom BuildConform palette */
+  --surface: hsl(228, 28%, 7%);
+  --brand-400: hsl(256, 87%, 75%);
+  --brand-500: hsl(262, 83%, 58%);
+  --brand-600: hsl(263, 70%, 50%);
+  --accent-400: hsl(158, 64%, 52%);
+  --accent-500: hsl(162, 63%, 41%);
+  --accent-600: hsl(166, 72%, 32%);
+  --text-gray: hsl(217, 19%, 64%);
+}
+
+.dark {
+  --background: hsl(228, 28%, 7%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(228, 28%, 7%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(228, 28%, 7%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(262, 83%, 58%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background-color: var(--surface);
+    background-image: radial-gradient(circle, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+    background-size: 8px 8px;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .floating-label {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .input-focused + .floating-label,
+  .input-filled + .floating-label {
+    transform: translateY(-24px) scale(0.875);
+    color: var(--brand-500);
+  }
+
+  .toast {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .blueprint-svg {
+    animation: blueprintCheck 3s ease-in-out infinite;
+  }
+
+  @keyframes blueprintCheck {
+    0%, 70% { stroke: hsl(213, 12%, 29%); fill: none; }
+    80%, 100% { stroke: var(--accent-500); fill: var(--accent-500); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulseBrand {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(139, 92, 246, 0); }
+  }
+
+  .timeline-dot {
+    transition: all 0.3s ease;
+  }
+
+  .timeline-dot.active {
+    animation: pulseBrand 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-brand {
+    animation: pulseBrand 2s ease-in-out infinite;
+  }
+}
+
+/* Custom Tailwind utilities */
+@layer utilities {
+  .bg-surface {
+    background-color: var(--surface);
+  }
+  
+  .bg-brand-500 {
+    background-color: var(--brand-500);
+  }
+  
+  .bg-brand-600 {
+    background-color: var(--brand-600);
+  }
+  
+  .text-brand-500 {
+    color: var(--brand-500);
+  }
+  
+  .border-brand-500 {
+    border-color: var(--brand-500);
+  }
+  
+  .ring-brand-500 {
+    --tw-ring-color: var(--brand-500);
+  }
+  
+  .bg-accent-500 {
+    background-color: var(--accent-500);
+  }
+  
+  .text-accent-500 {
+    color: var(--accent-500);
+  }
+  
+  .text-gray-400 {
+    color: var(--text-gray);
+  }
+}
