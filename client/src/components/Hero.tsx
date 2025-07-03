@@ -34,11 +34,9 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6">
-              Submit plans. Get{" "}
+              Submit plans. Get AI compliance in minutes
               <span className="text-transparent bg-gradient-to-r from-brand-400 to-accent-500 bg-clip-text">
-                AI compliance
-              </span>{" "}
-              in minutes.
+              </span>
             </h1>
 
             <p className="text-xl text-gray-400 mb-8 leading-relaxed">
