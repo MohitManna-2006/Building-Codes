@@ -67,13 +67,13 @@ export default function LeadCapture() {
   };
 
   return (
-    <section id="lead-capture" className="py-24 lg:py-32 bg-white/2">
+    <section id="lead-capture" className="py-24 lg:py-32 bg-white/2 dark:bg-transparent">
       <div className="max-w-3xl mx-auto px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="bg-surface/80 ring-1 ring-brand-500/30 shadow-xl rounded-3xl p-16"
+          className="bg-surface/80 dark:bg-charcoalLite ring-1 ring-brand-500/30 dark:ring-charcoalLite shadow-xl rounded-3xl p-16"
         >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -113,7 +113,7 @@ export default function LeadCapture() {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 rounded-xl bg-surface/60 ring-1 ring-white/10 focus:ring-brand-500 focus:outline-none text-white peer placeholder-transparent"
+                    className="w-full px-4 py-4 rounded-xl bg-white dark:bg-charcoalLite ring-1 ring-white/10 focus:ring-brand-500 focus:outline-none text-white peer placeholder-transparent"
                     placeholder="Full Name"
                     required
                   />
@@ -132,7 +132,7 @@ export default function LeadCapture() {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 rounded-xl bg-surface/60 ring-1 ring-white/10 focus:ring-brand-500 focus:outline-none text-white peer placeholder-transparent"
+                    className="w-full px-4 py-4 rounded-xl bg-white dark:bg-charcoalLite ring-1 ring-white/10 focus:ring-brand-500 focus:outline-none text-white peer placeholder-transparent"
                     placeholder="Company"
                   />
                   <label
@@ -150,7 +150,7 @@ export default function LeadCapture() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 rounded-xl bg-surface/60 ring-1 ring-white/10 focus:ring-brand-500 focus:outline-none text-white peer placeholder-transparent"
+                    className="w-full px-4 py-4 rounded-xl bg-white dark:bg-charcoalLite ring-1 ring-white/10 focus:ring-brand-500 focus:outline-none text-white peer placeholder-transparent"
                     placeholder="Email Address"
                     required
                   />
@@ -167,7 +167,7 @@ export default function LeadCapture() {
                   disabled={isLoading}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full py-4 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold transition-all group relative disabled:opacity-50"
+                  className="w-full py-4 rounded-xl bg-brandPurple-600 hover:bg-brandPurple-700 dark:bg-brandPurple-700 dark:hover:bg-brandPurple-600 text-white font-semibold transition-all group relative disabled:opacity-50"
                 >
                   {isLoading ? (
                     <div className="w-6 h-6 border-2 border-white/20 border-t-white rounded-full animate-spin mx-auto" />

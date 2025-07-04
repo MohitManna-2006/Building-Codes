@@ -41,7 +41,12 @@ export default function ProblemSection() {
   ];
 
   return (
-    <section className="py-24 lg:py-32">
+    <section className="py-24 lg:py-32 bg-[#f9fafe] dark:bg-transparent text-neutral-900 dark:text-neutral-100">
+      <div className="w-full px-6">
+        <h2 className="w-full text-3xl lg:text-4xl font-bold mb-6 text-balance text-center">
+          The Compliance Bottleneck Costing Billions
+        </h2>
+      </div>
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -53,9 +58,6 @@ export default function ProblemSection() {
           <div className="inline-block rounded-xl border border-brand-500 px-4 py-1 text-xs uppercase tracking-wide text-brand-500/90 mb-6">
             The Old Way
           </div>
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            The Compliance Bottleneck Costing Billions
-          </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Traditional building permit processes create massive delays, costly rework, and frustrated
             stakeholders across the entire construction industry.
@@ -70,13 +72,15 @@ export default function ProblemSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-surface/70 rounded-2xl ring-1 ring-white/10 p-8 text-center"
+              className={[
+                "rounded-2xl p-8 text-center shadow-md dark:shadow-none bg-white/70 dark:bg-charcoal ring-1 ring-neutral-200 dark:ring-charcoalLite hover:bg-brandPurple-50 dark:hover:bg-brandPurple-900/10"
+              ].join(" ")}
             >
-              <div className={`w-16 h-16 mx-auto mb-6 rounded-xl ${problem.bgColor} flex items-center justify-center`}>
+              <div className={`${problem.bgColor} w-16 h-16 mx-auto mb-6 rounded-xl flex items-center justify-center`}>
                 <div className={problem.color}>{problem.icon}</div>
               </div>
               <h3 className="text-xl font-semibold mb-3">{problem.title}</h3>
-              <div className={`text-3xl font-bold ${problem.color} mb-2`}>{problem.stat}</div>
+              <div className={`${problem.color} text-3xl font-bold mb-2`}>{problem.stat}</div>
               <p className="text-gray-400">{problem.description}</p>
             </motion.div>
           ))}

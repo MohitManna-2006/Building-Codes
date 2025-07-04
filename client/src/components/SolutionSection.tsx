@@ -43,7 +43,8 @@ export default function SolutionSection() {
   const steps = [
     { number: "1", text: "Upload drawings (PDF/DWG)" },
     { number: "2", text: "AI parses local amendments" },
-    { number: "3", text: "Checklist & pass/fail" }
+    { number: "3", text: "Checklist & pass/fail" },
+    { number: "4", text: "Ready to go Code Compliance" },
   ];
 
   const features = [
@@ -60,161 +61,57 @@ export default function SolutionSection() {
   ];
 
   return (
-    <section id="solution" className="py-24 lg:py-32 bg-white/2">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="inline-block rounded-xl border border-brand-500 px-4 py-1 text-xs uppercase tracking-wide text-brand-500/90 mb-6">
-            Our Solution
-          </div>
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            AI-driven compliance, from upload to approval.
+    <section className="py-12">
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="rounded-3xl bg-[#f7fbff] dark:bg-transparent shadow-xl p-8 sm:p-12 flex flex-col items-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+            AI-Driven Compliance, From Upload to Approval
           </h2>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-6">How it works (high-level)</h3>
-              <div className="space-y-4">
-                {steps.map((step, index) => (
-                  <motion.div
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 items-start md:items-stretch">
+            {/* How it works */}
+            <div className="flex flex-col h-full">
+              <h3 className="text-lg font-semibold text-center mb-4 text-gray-900 dark:text-white">How it works (high-level)</h3>
+              <div className="flex flex-col gap-4 h-full">
+                {steps.map((step, idx) => (
+                  <div
                     key={step.number}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-center gap-4"
+                    className={`flex items-center rounded-xl bg-white dark:bg-charcoalLite shadow-sm px-4 py-3 flex-1 ${idx % 2 === 1 ? 'bg-[#f3f6fa] dark:bg-charcoalLite/80' : ''}`}
+                    style={{ minHeight: '64px', height: '100%' }}
                   >
-                    <div className="w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center text-sm font-semibold">
-                      {step.number}
-                    </div>
-                    <span>{step.text}</span>
-                  </motion.div>
+                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand-500 text-white font-bold mr-4">{step.number}</span>
+                    <span className="text-gray-900 dark:text-neutral-100 font-medium">{step.text}</span>
+                  </div>
                 ))}
               </div>
             </div>
-
-            <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-6">Key features</h3>
-              <div className="space-y-4">
-                {features.map((feature, index) => (
-                  <motion.div
+            {/* Key Features */}
+            <div className="flex flex-col h-full">
+              <h3 className="text-lg font-semibold text-center mb-4 text-gray-900 dark:text-white">Key Features</h3>
+              <div className="flex flex-col gap-4 h-full">
+                {features.map((feature, idx) => (
+                  <div
                     key={feature}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-start gap-3"
+                    className={`flex items-center rounded-xl bg-white dark:bg-charcoalLite shadow-sm px-4 py-3 flex-1 ${idx % 2 === 1 ? 'bg-[#f3f6fa] dark:bg-charcoalLite/80' : ''}`}
+                    style={{ minHeight: '64px', height: '100%' }}
                   >
-                    <svg className="w-5 h-5 text-brand-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span>{feature}</span>
-                  </motion.div>
+                    <span className="text-gray-900 dark:text-neutral-100 font-medium text-center w-full">{feature}</span>
+                  </div>
                 ))}
               </div>
             </div>
-
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Relevant expertise & efficiency</h3>
-              <div className="space-y-3 text-gray-400">
-                {expertise.map((item, index) => (
-                  <motion.p
-                    key={item}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    • {item}
-                  </motion.p>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <img
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
-              alt="AI compliance dashboard interface"
-              className="rounded-2xl shadow-2xl ring-1 ring-white/10"
-            />
-          </motion.div>
-        </div>
-
-        {/* Use-case Switcher */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-20"
-        >
-          <div className="bg-surface/70 rounded-2xl ring-1 ring-white/10 p-8">
-            <h3 className="text-xl font-semibold mb-8 text-center">Use-Case Scenarios</h3>
-
-            <div className="flex justify-center mb-8">
-              <div className="flex bg-white/5 rounded-xl p-1">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`px-6 py-2 rounded-lg font-medium transition-all ${
-                      activeTab === tab.id
-                        ? "bg-brand-500 text-white"
-                        : "text-gray-400 hover:text-white"
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="grid md:grid-cols-2 gap-8 items-center"
-              >
-                <div>
-                  <h4 className="font-semibold mb-3">{tabContent[activeTab as keyof typeof tabContent].title}</h4>
-                  {tabContent[activeTab as keyof typeof tabContent].content.map((paragraph, index) => (
-                    <p key={index} className="text-gray-400 mb-4">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  <img
-                    src={tabContent[activeTab as keyof typeof tabContent].image}
-                    alt={`${tabContent[activeTab as keyof typeof tabContent].title} scenario`}
-                    className="w-full h-48 object-cover hover:scale-105 transition-transform"
-                  />
-                </div>
-              </motion.div>
-            </AnimatePresence>
           </div>
-        </motion.div>
+          {/* Expertise */}
+          <div className="w-full mt-4">
+            <div className="rounded-2xl bg-white/80 dark:bg-charcoalLite border border-gray-100 dark:border-charcoalLite p-6 shadow-sm flex flex-col items-center">
+              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">Relevant Expertise & Efficiency</h4>
+              <ul className="text-gray-700 dark:text-neutral-300 text-center space-y-1">
+                {expertise.map((item) => (
+                  <li key={item}>• {item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

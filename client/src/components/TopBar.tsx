@@ -16,9 +16,7 @@ export default function TopBar() {
 
   return (
     <nav
-      className={`sticky top-9 z-40 h-16 bg-surface/80 transition-all duration-300 glass-effect ${
-        isScrolled ? "border-b border-white/20" : "border-b border-white/10"
-      }`}
+      className="sticky top-9 z-40 h-16 bg-[#181a20] border-b border-white/10"
     >
       <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
         <div className="flex items-center gap-8">
@@ -40,12 +38,6 @@ export default function TopBar() {
             </a>
             <a href="#about" className="text-gray-400 hover:text-white transition-colors">
               About
-            </a>
-            <a href="#blog" className="text-gray-400 hover:text-white transition-colors">
-              Blog
-            </a>
-            <a href="#contact" className="text-gray-400 hover:text-white transition-colors">
-              Contact
             </a>
           </div>
         </div>
@@ -94,12 +86,6 @@ export default function TopBar() {
             </a>
             <a href="#about" className="block text-gray-400 hover:text-white transition-colors">
               About
-            </a>
-            <a href="#blog" className="block text-gray-400 hover:text-white transition-colors">
-              Blog
-            </a>
-            <a href="#contact" className="block text-gray-400 hover:text-white transition-colors">
-              Contact
             </a>
           </div>
         </motion.div>

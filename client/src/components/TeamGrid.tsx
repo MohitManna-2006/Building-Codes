@@ -8,11 +8,6 @@ export default function TeamGrid() {
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
     },
     {
-      name: "Sarah Rodriguez",
-      role: "Head of Product",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
-    },
-    {
       name: "David Kumar",
       role: "AI Research Lead",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
@@ -25,39 +20,25 @@ export default function TeamGrid() {
   ];
 
   return (
-    <section className="py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="inline-block rounded-xl border border-brand-500 px-4 py-1 text-xs uppercase tracking-wide text-brand-500/90 mb-6">
-            Team
-          </div>
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">Meet the builders</h2>
-        </motion.div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {teamMembers.map((member, index) => (
-            <motion.article
+    <section className="py-24 lg:py-32 bg-[#f9fafe] dark:bg-charcoal text-neutral-900 dark:text-neutral-100">
+      <div className="rounded-3xl bg-[#ecf3ff] dark:bg-[#1a1d24] shadow-xl p-10 max-w-5xl mx-auto flex flex-col items-center">
+        <div className="w-full flex justify-center">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 dark:text-white mb-4 text-center">Meet the Builders</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full justify-items-center">
+          {teamMembers.map((member) => (
+            <div
               key={member.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group rounded-xl bg-surface/70 ring-1 ring-white/10 p-6 text-center transition hover:ring-brand-500/60"
+              className="flex flex-col items-center bg-white/70 dark:bg-charcoal rounded-2xl shadow-md dark:shadow-none ring-1 ring-neutral-200 dark:ring-charcoalLite p-6 w-80 h-80"
             >
               <img
                 src={member.image}
                 alt={`${member.name} headshot`}
                 className="mx-auto h-20 w-20 rounded-full object-cover ring-2 ring-brand-500/40 group-hover:ring-brand-500 mb-4 transition-all"
               />
-              <h4 className="font-medium text-white">{member.name}</h4>
-              <p className="text-xs text-gray-400">{member.role}</p>
-            </motion.article>
+              <h4 className="font-medium text-gray-800 dark:text-white">{member.name}</h4>
+              <p className="text-xs text-gray-500 dark:text-neutral-200">{member.role}</p>
+            </div>
           ))}
         </div>
       </div>
