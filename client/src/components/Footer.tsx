@@ -76,7 +76,7 @@ export default function Footer() {
           <a href="#" className="hover:text-brand-500 transition-colors">Terms</a>
           <a href="#" className="hover:text-brand-500 transition-colors">Cookies</a>
         </div>
-        <div className="text-sm text-neutral-400">© {currentYear} comply360 Inc.</div>
+        <div className="text-sm text-neutral-400 whitespace-nowrap">© {currentYear} comply360 Inc.</div>
         <div className="text-xs text-red-500 font-semibold mt-2 text-center w-full">
           🚧 Pre-Launch: comply360 is not live yet. This is a preview only.
         </div>

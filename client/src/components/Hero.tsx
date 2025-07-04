@@ -62,6 +62,8 @@ export default function Hero() {
         <div className="flex flex-col items-center gap-4 sm:gap-6">
           <motion.a
             href="https://docs.google.com/forms/d/e/1FAIpQLSfaJ1G4TTxixsBWq_C5kQlBLCiXaCkORNZCXHWZFZLHylncmA/viewform?usp=send_form"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-3 bg-brandPurple-600 hover:bg-brandPurple-700 dark:bg-brandPurple-700 dark:hover:bg-brandPurple-600 text-white font-semibold rounded-xl shadow-lg px-8 py-4"
