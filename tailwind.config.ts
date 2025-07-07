@@ -10,40 +10,24 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        card: {
-          DEFAULT: "var(--card)",
-          foreground: "var(--card-foreground)",
-        },
-        popover: {
-          DEFAULT: "var(--popover)",
-          foreground: "var(--popover-foreground)",
-        },
-        primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--primary-foreground)",
-        },
-        secondary: {
-          DEFAULT: "var(--secondary)",
-          foreground: "var(--secondary-foreground)",
-        },
-        muted: {
-          DEFAULT: "var(--muted)",
-          foreground: "var(--muted-foreground)",
-        },
-        accent: {
-          DEFAULT: "var(--accent)",
-          foreground: "var(--accent-foreground)",
-        },
-        destructive: {
-          DEFAULT: "var(--destructive)",
-          foreground: "var(--destructive-foreground)",
-        },
-        border: "var(--border)",
-        input: "var(--input)",
-        ring: "var(--ring)",
+        background: "#FFFFFF",
+        foreground: "#111827",
+        muted: "#F8FAFC",
+        'muted-foreground': "#6B7280",
+        popover: "#FFFFFF",
+        'popover-foreground': "#111827",
+        card: { DEFAULT: "#FFFFFF", foreground: "#111827" },
+        border: "#E5E7EB",
+        input: "#E5E7EB",
+        primary: { DEFAULT: "#1E3A8A", foreground: "#FFFFFF" },
+        secondary: { DEFAULT: "#F8FAFC", foreground: "#6B7280" },
+        accent: { DEFAULT: "#10B981", foreground: "#FFFFFF" },
+        destructive: { DEFAULT: "#EF4444", foreground: "#FFFFFF" },
+        ring: "#1E3A8A",
         chart: {
           "1": "var(--chart-1)",
           "2": "var(--chart-2)",
@@ -83,6 +67,12 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      boxShadow: {
+        card: "0 1px 3px rgba(0,0,0,0.07), 0 1.5px 6px rgba(0,0,0,0.04)",
+      },
+      borderColor: {
+        divider: "#E5E7EB",
       },
     },
   },

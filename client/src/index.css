@@ -3,26 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(20, 14.3%, 4.1%);
-  --muted: hsl(60, 4.8%, 95.9%);
-  --muted-foreground: hsl(25, 5.3%, 44.7%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(20, 14.3%, 4.1%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(20, 14.3%, 4.1%);
-  --border: hsl(20, 5.9%, 90%);
-  --input: hsl(20, 5.9%, 90%);
-  --primary: hsl(207, 90%, 54%);
-  --primary-foreground: hsl(211, 100%, 99%);
-  --secondary: hsl(60, 4.8%, 95.9%);
-  --secondary-foreground: hsl(24, 9.8%, 10%);
-  --accent: hsl(60, 4.8%, 95.9%);
-  --accent-foreground: hsl(24, 9.8%, 10%);
-  --destructive: hsl(0, 84.2%, 60.2%);
-  --destructive-foreground: hsl(60, 9.1%, 97.8%);
-  --ring: hsl(20, 14.3%, 4.1%);
+  --background: #FFFFFF;
+  --foreground: #111827;
+  --muted: #F8FAFC;
+  --muted-foreground: #6B7280;
+  --popover: #FFFFFF;
+  --popover-foreground: #111827;
+  --card: #FFFFFF;
+  --card-foreground: #111827;
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --primary: #1E3A8A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F8FAFC;
+  --secondary-foreground: #6B7280;
+  --accent: #10B981;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --ring: #1E3A8A;
   --radius: 0.5rem;
+  --blueprint-grid: repeating-linear-gradient(0deg, #E5E7EB 0px, #E5E7EB 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, #E5E7EB 0px, #E5E7EB 1px, transparent 1px, transparent 40px);
   
   /* Custom BuildConform palette */
   --surface: hsl(228, 28%, 7%);
@@ -65,10 +66,13 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    background-color: var(--surface);
-    background-image: radial-gradient(circle, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
-    background-size: 8px 8px;
+    background-color: var(--background);
+    background-image: radial-gradient(circle at 50% 0, #F8FAFC 0%, transparent 70%), var(--blueprint-grid);
+    background-size: 100% 600px, 40px 40px;
+    background-repeat: no-repeat, repeat;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--foreground);
+    line-height: 1.7;
   }
 
   .glass-effect {
@@ -128,6 +132,18 @@
 
   .animate-pulse-brand {
     animation: pulseBrand 2s ease-in-out infinite;
+  }
+
+  .card {
+    background: var(--card);
+    color: var(--card-foreground);
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 1.5px 6px rgba(0,0,0,0.04);
+    border: 1px solid var(--border);
+  }
+
+  .divider {
+    border-bottom: 1px solid var(--border);
   }
 }
 
