@@ -1,9 +1,9 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { insertWaitlistSchema } from "@shared/schema";
+import { insertWaitlistSchema } from "@shared/schema.js";
 import fs from "fs/promises";
 import path from "path";
-import { appendLead, getLeads, checkEmailExists } from "./googleSheets";
+import { appendLead, getLeads, checkEmailExists } from "./googleSheets.js";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Health check endpoint
