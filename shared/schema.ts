@@ -1,33 +1,19 @@
-import { pgTable, text, serial, integer, timestamp } from "drizzle-orm/pg-core";
-import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-export const users = pgTable("users", {
-  id: serial("id").primaryKey(),
-  username: text("username").notNull().unique(),
-  password: text("password").notNull(),
+// Simple schemas for Google Sheets integration
+export const insertWaitlistSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  company: z.string().optional(),
+  email: z.string().email("Valid email is required"),
 });
 
-export const waitlistEntries = pgTable("waitlist_entries", {
-  id: serial("id").primaryKey(),
-  name: text("name").notNull(),
-  company: text("company"),
-  email: text("email").notNull(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
+export const waitlistEntrySchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  company: z.string().nullable(),
+  email: z.string(),
+  createdAt: z.string(),
 });
 
-export const insertUserSchema = createInsertSchema(users).pick({
-  username: true,
-  password: true,
-});
-
-export const insertWaitlistSchema = createInsertSchema(waitlistEntries).pick({
-  name: true,
-  company: true,
-  email: true,
-});
-
-export type InsertUser = z.infer<typeof insertUserSchema>;
-export type User = typeof users.$inferSelect;
 export type InsertWaitlistEntry = z.infer<typeof insertWaitlistSchema>;
-export type WaitlistEntry = typeof waitlistEntries.$inferSelect;
+export type WaitlistEntry = z.infer<typeof waitlistEntrySchema>;

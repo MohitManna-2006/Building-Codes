@@ -20,7 +20,8 @@ LandingLens is a modern, responsive landing page for an AI-powered building code
 ### 📝 **Lead Capture System**
 - **Multi-point Capture**: Hero section and dedicated lead capture section
 - **Form Validation**: Real-time email and input validation
-- **Database Integration**: PostgreSQL with Drizzle ORM for data persistence
+- **Google Sheets Integration**: Direct storage to Google Sheets for easy data management
+- **Backup Storage**: Local JSON backup for data redundancy
 - **Success Feedback**: Toast notifications and loading states
 
 ### 🚀 **Performance & UX**
@@ -32,7 +33,7 @@ LandingLens is a modern, responsive landing page for an AI-powered building code
 ### 🛠 **Technical Features**
 - **TypeScript**: Full type safety across the application
 - **Modern Stack**: React 18, Vite, Tailwind CSS, Framer Motion
-- **Database**: PostgreSQL with Drizzle ORM
+- **Data Storage**: Google Sheets API with local JSON backup
 - **API**: Express.js backend with RESTful endpoints
 - **Development**: Hot reload, error overlays, and debugging tools
 
@@ -71,10 +72,9 @@ LandingLens/
 
 ### Backend
 - **Express.js** - Web framework
-- **Drizzle ORM** - Database ORM
-- **PostgreSQL** - Database
+- **Google Sheets API** - Data storage
 - **Zod** - Schema validation
-- **Passport.js** - Authentication
+- **Node.js** - Runtime environment
 
 ### Development
 - **Vite** - Build tool
@@ -87,7 +87,7 @@ LandingLens/
 
 - **Node.js** (v18 or higher)
 - **npm** or **yarn**
-- **PostgreSQL** database
+- **Google Cloud Project** with Google Sheets API enabled
 
 ### Installation
 
@@ -102,22 +102,15 @@ LandingLens/
    npm install
    ```
 
-3. **Set up environment variables**
-   ```bash
-   # Create a .env file in the root directory
-   cp .env.example .env
-   ```
+3. **Set up Google Sheets integration**
    
-   Add your database URL:
-   ```env
-   DATABASE_URL=postgresql://username:password@localhost:5432/landinglens
-   ```
-
-4. **Set up the database**
-   ```bash
-   # Push the schema to your database
-   npm run db:push
-   ```
+   Follow the detailed setup instructions in [GOOGLE_SHEETS_SETUP.md](./GOOGLE_SHEETS_SETUP.md):
+   
+   - Create a Google Sheet with the required columns
+   - Set up a Google Cloud Project
+   - Create a service account and download credentials
+   - Share the Google Sheet with the service account
+   - Update the spreadsheet ID in `server/config.ts`
 
 5. **Start the development server**
    ```bash
@@ -148,8 +141,8 @@ npm run dev:backend      # Start backend only
 npm run build           # Build for production
 npm run start           # Start production server
 
-# Database
-npm run db:push         # Push schema changes to database
+# Google Sheets
+# See GOOGLE_SHEETS_SETUP.md for configuration
 
 # Type checking
 npm run check           # TypeScript type checking
@@ -187,24 +180,25 @@ Update the following files to customize content:
 - **Lead Capture**: `client/src/components/LeadCapture.tsx`
 - **Sections**: Individual section components in `client/src/components/`
 
-### Database Schema
+### Google Sheets Configuration
 
-Modify the database schema in `shared/schema.ts`:
+Modify the Google Sheets configuration in `server/config.ts`:
 
 ```typescript
-export const waitlistEntries = pgTable("waitlist_entries", {
-  id: serial("id").primaryKey(),
-  name: text("name").notNull(),
-  company: text("company"),
-  email: text("email").notNull(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-});
+export const GOOGLE_SHEETS_CONFIG = {
+  SPREADSHEET_ID: 'YOUR_SPREADSHEET_ID_HERE',
+  SHEET_NAME: 'Sheet1',
+  RANGE: 'Sheet1!A:D',
+  // ... rest of config
+};
 ```
+
+For detailed setup instructions, see [GOOGLE_SHEETS_SETUP.md](./GOOGLE_SHEETS_SETUP.md).
 
 ## 🔧 API Endpoints
 
-### Lead Capture
-- **POST** `/api/leads` - Save a new lead
+### Waitlist Management
+- **POST** `/api/waitlist` - Add new waitlist entry
   ```json
   {
     "name": "John Doe",
@@ -212,10 +206,9 @@ export const waitlistEntries = pgTable("waitlist_entries", {
     "email": "john@example.com"
   }
   ```
-
-### Waitlist
-- **GET** `/api/waitlist` - Get all waitlist entries
-- **POST** `/api/waitlist` - Add new waitlist entry
+- **GET** `/api/waitlist` - Get all waitlist entries from Google Sheets
+- **GET** `/api/waitlist/check/:email` - Check if email exists in waitlist
+- **GET** `/api/waitlist/count` - Get total number of waitlist entries
 
 ## 🧪 Testing
 
@@ -236,7 +229,8 @@ npm test
 
 1. **Connect your repository** to Vercel
 2. **Set environment variables**:
-   - `DATABASE_URL`
+   - `GOOGLE_SHEETS_CREDENTIALS` (base64 encoded credentials.json)
+   - `SPREADSHEET_ID` (your Google Sheet ID)
 3. **Deploy** - Vercel will automatically build and deploy
 
 ### Other Platforms
@@ -286,7 +280,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Radix UI** for accessible components
 - **Tailwind CSS** for the utility-first CSS framework
 - **Framer Motion** for smooth animations
-- **Drizzle ORM** for type-safe database operations
+- **Google Sheets API** for easy data management
 
 ## 📞 Support
 

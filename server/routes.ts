@@ -1,19 +1,41 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
 import { insertWaitlistSchema } from "@shared/schema";
 import fs from "fs/promises";
 import path from "path";
-import { appendLead } from "./googleSheets";
+import { appendLead, getLeads, checkEmailExists } from "./googleSheets";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Waitlist API endpoint
   app.post("/api/waitlist", async (req, res) => {
     try {
       const validatedData = insertWaitlistSchema.parse(req.body);
-      const entry = await storage.createWaitlistEntry(validatedData);
       
-      // Also save to JSON file for persistence
+      // Check if email already exists in Google Sheets
+      const emailExists = await checkEmailExists(validatedData.email);
+      if (emailExists) {
+        return res.status(400).json({ 
+          error: "Email already registered",
+          message: "This email address is already on our waitlist."
+        });
+      }
+      
+      // Append to Google Sheets (primary storage)
+      try {
+        await appendLead({
+          name: validatedData.name,
+          company: validatedData.company,
+          email: validatedData.email
+        });
+      } catch (sheetsError) {
+        console.error("Error appending to Google Sheets:", sheetsError);
+        return res.status(500).json({ 
+          error: "Failed to save to Google Sheets",
+          message: "Unable to save your information. Please try again later."
+        });
+      }
+      
+      // Also save to JSON file for backup
       const waitlistPath = path.join(process.cwd(), "repository", "waitlist.json");
       
       try {
@@ -47,19 +69,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         // Continue with the response even if file write fails
       }
 
-      // Append to Google Sheets
-      try {
-        await appendLead({
-          name: validatedData.name,
-          company: validatedData.company,
-          email: validatedData.email
-        });
-      } catch (sheetsError) {
-        console.error("Error appending to Google Sheets:", sheetsError);
-        // Continue with the response even if Google Sheets write fails
-      }
-      
-      res.json({ success: true, entry });
+      res.json({ 
+        success: true, 
+        message: "Successfully added to waitlist!"
+      });
     } catch (error) {
       console.error("Waitlist signup error:", error);
       res.status(400).json({ 
@@ -69,14 +82,37 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Get waitlist entries
+  // Get waitlist entries from Google Sheets
   app.get("/api/waitlist", async (req, res) => {
     try {
-      const entries = await storage.getWaitlistEntries();
-      res.json(entries);
+      const leads = await getLeads();
+      res.json(leads);
     } catch (error) {
-      console.error("Error fetching waitlist:", error);
+      console.error("Error fetching waitlist from Google Sheets:", error);
       res.status(500).json({ error: "Failed to fetch waitlist entries" });
+    }
+  });
+
+  // Check if email exists in waitlist
+  app.get("/api/waitlist/check/:email", async (req, res) => {
+    try {
+      const { email } = req.params;
+      const exists = await checkEmailExists(email);
+      res.json({ exists });
+    } catch (error) {
+      console.error("Error checking email existence:", error);
+      res.status(500).json({ error: "Failed to check email existence" });
+    }
+  });
+
+  // Get waitlist count
+  app.get("/api/waitlist/count", async (req, res) => {
+    try {
+      const leads = await getLeads();
+      res.json({ count: leads.length });
+    } catch (error) {
+      console.error("Error getting waitlist count:", error);
+      res.status(500).json({ error: "Failed to get waitlist count" });
     }
   });
 
