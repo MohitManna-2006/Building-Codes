@@ -6,6 +6,15 @@ import path from "path";
 import { appendLead, getLeads, checkEmailExists } from "./googleSheets";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Health check endpoint
+  app.get("/api/health", (req, res) => {
+    res.json({ 
+      status: "ok", 
+      timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV || "development"
+    });
+  });
+
   // Waitlist API endpoint
   app.post("/api/waitlist", async (req, res) => {
     try {
