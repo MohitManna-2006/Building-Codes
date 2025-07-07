@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { insertWaitlistSchema } from "@shared/schema";
 import fs from "fs/promises";
 import path from "path";
+import { appendLead } from "./googleSheets";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Waitlist API endpoint
@@ -44,6 +45,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
       } catch (fileError) {
         console.error("Error writing to waitlist file:", fileError);
         // Continue with the response even if file write fails
+      }
+
+      // Append to Google Sheets
+      try {
+        await appendLead({
+          name: validatedData.name,
+          company: validatedData.company,
+          email: validatedData.email
+        });
+      } catch (sheetsError) {
+        console.error("Error appending to Google Sheets:", sheetsError);
+        // Continue with the response even if Google Sheets write fails
       }
       
       res.json({ success: true, entry });
