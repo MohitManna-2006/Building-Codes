@@ -1,6 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { insertWaitlistSchema } from "@shared/schema.js";
+import { insertWaitlistSchema } from "../shared/schema.js";
 import fs from "fs/promises";
 import path from "path";
 import { appendLead, getLeads, checkEmailExists } from "./googleSheets.js";
