@@ -61,7 +61,7 @@ export default function SolutionSection() {
   ];
 
   return (
-    <section className="py-12">
+    <section id="solution" className="py-12 scroll-mt-20">
       <div className="max-w-4xl mx-auto px-4">
         <div className="rounded-3xl bg-[#f7fbff] dark:bg-transparent shadow-xl p-8 sm:p-12 flex flex-col items-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">
