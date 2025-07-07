@@ -113,7 +113,7 @@ export default function LeadCapture() {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 rounded-xl bg-white dark:bg-charcoalLite ring-1 ring-white/10 focus:ring-brand-500 focus:outline-none text-white peer placeholder-transparent"
+                    className="w-full px-4 py-4 rounded-xl bg-white dark:bg-charcoalLite ring-1 ring-white/10 focus:ring-brand-500 focus:outline-none text-gray-900 dark:text-white peer placeholder-transparent"
                     placeholder="Full Name"
                     required
                   />
@@ -132,7 +132,7 @@ export default function LeadCapture() {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 rounded-xl bg-white dark:bg-charcoalLite ring-1 ring-white/10 focus:ring-brand-500 focus:outline-none text-white peer placeholder-transparent"
+                    className="w-full px-4 py-4 rounded-xl bg-white dark:bg-charcoalLite ring-1 ring-white/10 focus:ring-brand-500 focus:outline-none text-gray-900 dark:text-white peer placeholder-transparent"
                     placeholder="Company"
                   />
                   <label
@@ -150,7 +150,7 @@ export default function LeadCapture() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 rounded-xl bg-white dark:bg-charcoalLite ring-1 ring-white/10 focus:ring-brand-500 focus:outline-none text-white peer placeholder-transparent"
+                    className="w-full px-4 py-4 rounded-xl bg-white dark:bg-charcoalLite ring-1 ring-white/10 focus:ring-brand-500 focus:outline-none text-gray-900 dark:text-white peer placeholder-transparent"
                     placeholder="Email Address"
                     required
                   />
