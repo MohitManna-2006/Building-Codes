@@ -69,16 +69,16 @@ export default function Footer() {
               <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
             </svg>
           </div>
-          <span className="text-lg font-semibold text-gray-900 dark:text-white">comply360</span>
+          <span className="text-lg font-semibold text-gray-900 dark:text-white">ConformaBuild</span>
         </div>
         <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-neutral-500">
           <a href="#" className="hover:text-brand-500 transition-colors">Privacy</a>
           <a href="#" className="hover:text-brand-500 transition-colors">Terms</a>
           <a href="#" className="hover:text-brand-500 transition-colors">Cookies</a>
         </div>
-        <div className="text-sm text-neutral-400 whitespace-nowrap">© {currentYear} comply360 Inc.</div>
+        <div className="text-sm text-neutral-400 whitespace-nowrap">© {currentYear} ConformaBuild Inc.</div>
         <div className="text-xs text-red-500 font-semibold mt-2 text-center w-full">
-          🚧 Pre-Launch: comply360 is not live yet. This is a preview only.
+          🚧 Pre-Launch: ConformaBuild is not live yet. This is a preview only.
         </div>
       </div>
     </footer>

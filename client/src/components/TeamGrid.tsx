@@ -20,7 +20,7 @@ export default function TeamGrid() {
   ];
 
   return (
-    <section className="py-24 lg:py-32 bg-[#f9fafe] dark:bg-charcoal text-neutral-900 dark:text-neutral-100">
+    <section id="about" className="py-24 lg:py-32 bg-[#f9fafe] dark:bg-charcoal text-neutral-900 dark:text-neutral-100 scroll-mt-20">
       <div className="rounded-3xl bg-[#ecf3ff] dark:bg-[#1a1d24] shadow-xl p-10 max-w-5xl mx-auto flex flex-col items-center">
         <div className="w-full flex justify-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 dark:text-white mb-4 text-center">Meet the Builders</h2>

@@ -11,12 +11,10 @@ import FAQContactSection from "@/components/FAQContactSection";
 import LeadCapture from "@/components/LeadCapture";
 // import SecondCTA from "@/components/SecondCTA";
 import Footer from "@/components/Footer";
-import PrelaunchBar from "@/components/PrelaunchBar";
 
 function App() {
   return (
     <div className="min-h-screen bg-white text-neutral-900 dark:bg-charcoal dark:text-neutral-100">
-      <PrelaunchBar />
       <Navbar />
       <main>
         <Hero />
