@@ -15,6 +15,7 @@ function getCredentials() {
       return JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS);
     } catch (error) {
       console.error('Error parsing Google Sheets credentials from environment:', error);
+      throw new Error('Invalid GOOGLE_SHEETS_CREDENTIALS environment variable');
     }
   }
   
@@ -32,18 +33,29 @@ function getCredentials() {
   throw new Error('Google Sheets credentials not found. Please set GOOGLE_SHEETS_CREDENTIALS environment variable or add credentials.json file.');
 }
 
-// Authenticate using credentials
-const auth = new google.auth.GoogleAuth({
-  credentials: getCredentials(),
-  scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-});
+// Lazy initialization of Google Sheets client
+let sheetsClient: any = null;
 
-// Create a Sheets API client
-const sheets = google.sheets({ version: 'v4', auth });
+function getSheetsClient() {
+  if (!sheetsClient) {
+    try {
+      const auth = new google.auth.GoogleAuth({
+        credentials: getCredentials(),
+        scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+      });
+      sheetsClient = google.sheets({ version: 'v4', auth });
+    } catch (error) {
+      console.error('Failed to initialize Google Sheets client:', error);
+      throw error;
+    }
+  }
+  return sheetsClient;
+}
 
 // Function to append a lead to the sheet
 export async function appendLead({ name, company, email }: { name: string; company?: string | null; email: string }) {
   try {
+    const sheets = getSheetsClient();
     const response = await sheets.spreadsheets.values.append({
       spreadsheetId: GOOGLE_SHEETS_CONFIG.SPREADSHEET_ID,
       range: GOOGLE_SHEETS_CONFIG.RANGE,
@@ -64,6 +76,7 @@ export async function appendLead({ name, company, email }: { name: string; compa
 // Function to get all leads from the sheet
 export async function getLeads() {
   try {
+    const sheets = getSheetsClient();
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: GOOGLE_SHEETS_CONFIG.SPREADSHEET_ID,
       range: GOOGLE_SHEETS_CONFIG.RANGE,
@@ -74,7 +87,7 @@ export async function getLeads() {
     // Skip header row if it exists
     const dataRows = values.length > 0 && values[0][0] === 'Name' ? values.slice(1) : values;
     
-    return dataRows.map((row, index) => ({
+    return dataRows.map((row: any[], index: number) => ({
       id: index + 1,
       name: row[0] || '',
       company: row[1] || '',
@@ -91,7 +104,7 @@ export async function getLeads() {
 export async function checkEmailExists(email: string): Promise<boolean> {
   try {
     const leads = await getLeads();
-    return leads.some(lead => lead.email.toLowerCase() === email.toLowerCase());
+    return leads.some((lead: any) => lead.email.toLowerCase() === email.toLowerCase());
   } catch (error) {
     console.error('Error checking email existence:', error);
     return false; // Default to false to allow signup if check fails
@@ -101,13 +114,14 @@ export async function checkEmailExists(email: string): Promise<boolean> {
 // Function to get sheet metadata
 export async function getSheetInfo() {
   try {
+    const sheets = getSheetsClient();
     const response = await sheets.spreadsheets.get({
       spreadsheetId: GOOGLE_SHEETS_CONFIG.SPREADSHEET_ID,
     });
     
     return {
       title: response.data.properties?.title,
-      sheets: response.data.sheets?.map(sheet => ({
+      sheets: response.data.sheets?.map((sheet: any) => ({
         title: sheet.properties?.title,
         sheetId: sheet.properties?.sheetId,
       })),
