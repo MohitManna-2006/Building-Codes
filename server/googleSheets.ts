@@ -2,7 +2,7 @@ import { google } from 'googleapis';
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { GOOGLE_SHEETS_CONFIG } from './config';
+import { GOOGLE_SHEETS_CONFIG } from './config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
