@@ -32,7 +32,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="w-full py-12 bg-white dark:bg-transparent border-t border-gray-100 dark:border-white/10" id="how-it-works">
+    <section className="w-full py-12 bg-white dark:bg-transparent border-t border-gray-100 dark:border-white/10 scroll-mt-20" id="how-it-works">
       <div className="max-w-5xl mx-auto px-4 sm:px-8 flex flex-col items-center">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2 text-center">How It Works</h2>
         <p className="text-lg text-neutral-600 dark:text-neutral-200 text-center mb-8">From upload to permit checklist in three simple steps.</p>

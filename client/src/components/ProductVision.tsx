@@ -19,7 +19,7 @@ export default function ProductVision() {
           className="text-center mb-16"
         >
           <div className="inline-block rounded-xl border border-brand-500 dark:border-brandPurple-600 px-4 py-1 text-xs uppercase tracking-wide text-brand-500 dark:text-brandPurple-400 mb-6">
-            Why we built comply360
+            Why we built ConformaBuild
           </div>
           <h2 className="text-3xl lg:text-4xl font-bold mb-6">Our vision for painless permits</h2>
         </motion.div>
