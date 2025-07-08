@@ -78,13 +78,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         // Continue with the response even if file write fails
       }
 
-      res.json({
+      return res.json({
         success: true,
         message: "Successfully added to waitlist!",
       });
     } catch (error) {
       console.error("Waitlist signup error:", error);
-      res.status(400).json({
+      return res.status(400).json({
         error: "Invalid data provided",
         details: error instanceof Error ? error.message : "Unknown error",
       });
