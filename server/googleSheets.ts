@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { GOOGLE_SHEETS_CONFIG } from './config.js';
@@ -130,4 +130,4 @@ export async function getSheetInfo() {
     console.error('Error getting sheet info:', error);
     throw error;
   }
-} 
+}
