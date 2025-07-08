@@ -1,6 +1,6 @@
 // Google Sheets Configuration
 export const GOOGLE_SHEETS_CONFIG = {
-  SPREADSHEET_ID: process.env.SPREADSHEET_ID || '1gfnoH207c1t9SmAB6oNLk04-R1WD29F0W0c4Vw9LN74',
+  SPREADSHEET_ID: process.env.GOOGLE_SHEETS_SPREADSHEET_ID || process.env.SPREADSHEET_ID || '1gfnoH207c1t9SmAB6oNLk04-R1WD29F0W0c4Vw9LN74',
   SHEET_NAME: 'Sheet1',
   RANGE: 'Sheet1!A:D',
   COLUMNS: {
