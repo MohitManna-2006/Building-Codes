@@ -7,7 +7,7 @@ import { appendLead, getLeads, checkEmailExists } from "./googleSheets.js";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Health check endpoint
-  app.get("/api/health", (req, res) => {
+  app.get("/api/health", (_req, res) => {
     res.json({
       status: "ok",
       timestamp: new Date().toISOString(),
@@ -78,13 +78,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         // Continue with the response even if file write fails
       }
 
-      return res.json({
+      res.json({
         success: true,
         message: "Successfully added to waitlist!",
       });
     } catch (error) {
       console.error("Waitlist signup error:", error);
-      return res.status(400).json({
+      res.status(400).json({
         error: "Invalid data provided",
         details: error instanceof Error ? error.message : "Unknown error",
       });
