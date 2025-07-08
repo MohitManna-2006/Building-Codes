@@ -1,13 +1,14 @@
-# 🏗️ LandingLens - AI-Powered Code Compliance Platform
+# 🏗️ Building Codes - Landing Page
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white)](https://vercel.com/)
 
 > **Instantly verify building plans with next-gen AI. Save time, reduce errors, and accelerate approvals.**
 
-LandingLens is a modern, responsive landing page for an AI-powered building code compliance platform. Built with React, TypeScript, and Tailwind CSS, it features a comprehensive lead capture system, beautiful animations, and a professional design optimized for conversion.
+Building Codes is a modern, responsive landing page for an AI-powered building code compliance platform. Built with React, TypeScript, and Tailwind CSS, it features a comprehensive lead capture system, beautiful animations, and a professional design optimized for conversion. **Optimized for Vercel deployment with serverless functions.**
 
 ## ✨ Features
 
@@ -40,23 +41,30 @@ LandingLens is a modern, responsive landing page for an AI-powered building code
 ## 🏗️ Project Structure
 
 ```
-LandingLens/
+Building-Codes/
+├── api/                    # Vercel serverless functions
+│   ├── health.ts          # Health check endpoint
+│   ├── waitlist.ts        # Waitlist management
+│   └── waitlist/          # Nested API routes
+│       ├── check/[email].ts
+│       └── count.ts
 ├── client/                 # Frontend React application
 │   ├── src/
-│   │   ├── components/     # React components
+│   │   ├── components/    # React components
 │   │   ├── api/           # API integration
 │   │   ├── hooks/         # Custom React hooks
 │   │   ├── lib/           # Utility functions
 │   │   └── pages/         # Page components
 │   └── index.html         # HTML template
-├── server/                # Express.js backend
-│   ├── index.ts          # Server entry point
-│   ├── routes.ts         # API routes
-│   └── storage.ts        # Database operations
-├── shared/               # Shared types and schemas
-│   └── schema.ts         # Database schema
-├── repository/           # Data storage
-└── attached_assets/      # Project assets
+├── server/                 # Backend server (development only)
+│   ├── dev-server.ts      # Development server
+│   ├── googleSheets.ts    # Google Sheets integration
+│   └── routes.ts          # Express routes
+├── shared/                 # Shared types and schemas
+│   └── schema.ts          # Database schema
+├── repository/            # Data storage
+├── attached_assets/       # Project assets
+└── dist/                  # Build output
 ```
 
 ## 🛠️ Tech Stack
@@ -71,7 +79,8 @@ LandingLens/
 - **Lucide React** - Icons
 
 ### Backend
-- **Express.js** - Web framework
+- **Express.js** - Web framework (development only)
+- **Vercel Serverless Functions** - Production API routes
 - **Google Sheets API** - Data storage
 - **Zod** - Schema validation
 - **Node.js** - Runtime environment

@@ -1,14 +1,18 @@
 {
-  "name": "rest-express",
+  "name": "building-codes",
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=development tsx server/index.ts",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "vite",
-    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --define:process.env.NODE_ENV='\"production\"'",
+    "dev:backend": "NODE_ENV=development tsx server/dev-server.ts",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "vite build",
+    "build:backend": "esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --define:process.env.NODE_ENV='\"production\"'",
     "start": "NODE_ENV=production node dist/index.js",
-    "check": "tsc"
+    "check": "tsc",
+    "vercel-build": "npm run build:frontend"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
@@ -79,8 +83,10 @@
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "@types/ws": "^8.5.13",
+    "@vercel/node": "^3.0.0",
     "@vitejs/plugin-react": "^4.6.0",
     "autoprefixer": "^10.4.20",
+    "concurrently": "^8.2.2",
     "esbuild": "^0.25.0",
     "postcss": "^8.4.47",
     "rollup": "^4.20.0",
