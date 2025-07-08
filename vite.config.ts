@@ -26,7 +26,7 @@ export default defineConfig({
       },
     },
     sourcemap: false,
-    minify: 'terser',
+    minify: 'esbuild',
     target: 'es2015',
   },
   server: {
@@ -38,5 +38,8 @@ export default defineConfig({
   preview: {
     port: 3000,
     host: true,
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom'],
   },
 });

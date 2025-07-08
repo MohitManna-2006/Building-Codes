@@ -1,7 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { insertWaitlistSchema } from '../shared/schema.js';
-import fs from 'fs/promises';
-import path from 'path';
 import { appendLead, getLeads, checkEmailExists } from '../server/googleSheets.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -40,40 +38,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           error: "Failed to save to Google Sheets",
           message: "Unable to save your information. Please try again later.",
         });
-      }
-
-      // Also save to JSON file for backup
-      const waitlistPath = path.join(process.cwd(), "repository", "waitlist.json");
-
-      try {
-        // Ensure directory exists
-        await fs.mkdir(path.dirname(waitlistPath), { recursive: true });
-
-        // Read existing data or create empty array
-        let existingData = [];
-        try {
-          const fileContent = await fs.readFile(waitlistPath, "utf-8");
-          existingData = JSON.parse(fileContent);
-        } catch (error) {
-          // File doesn't exist or is invalid, start with empty array
-          existingData = [];
-        }
-
-        // Add new entry
-        const entryWithTimestamp = {
-          name: validatedData.name,
-          company: validatedData.company,
-          email: validatedData.email,
-          ts: new Date().toISOString(),
-        };
-
-        existingData.push(entryWithTimestamp);
-
-        // Write back to file
-        await fs.writeFile(waitlistPath, JSON.stringify(existingData, null, 2));
-      } catch (fileError) {
-        console.error("Error writing to waitlist file:", fileError);
-        // Continue with the response even if file write fails
       }
 
       return res.json({

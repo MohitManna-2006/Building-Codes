@@ -4,6 +4,7 @@ import path from "path";
 import type { Server } from "http";
 import viteConfig from "../vite.config.js";
 import { nanoid } from "nanoid";
+import express from "express";
 
 export async function setupVite(app: Express, server: Server) {
   // Dynamically import Vite only when this function is called
