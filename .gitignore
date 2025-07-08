@@ -35,3 +35,8 @@ coverage/
 
 # OS
 Thumbs.db
+
+# Lockfiles - prevent platform-specific build issues on Vercel
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
