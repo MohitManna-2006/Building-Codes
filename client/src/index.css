@@ -180,6 +180,6 @@
   @apply dark:ring-charcoalLite;
 }
 
-.card, .bg-white, .bg-[#f5faff], .bg-[#f7fafd] {
+.card, .bg-white {
   @apply dark:bg-charcoalLite;
 }
