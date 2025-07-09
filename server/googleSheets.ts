@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 // Authenticate using your service account credentials
 const auth = new google.auth.GoogleAuth({
-  credentials: JSON.parse(readFileSync(path.join(__dirname, 'credentials.json'), 'utf8')),
+  credentials: JSON.parse(readFileSync('credentials.json', 'utf8')),
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
