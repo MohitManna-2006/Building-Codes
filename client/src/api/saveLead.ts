@@ -1,6 +1,6 @@
 export async function saveLead(data: { name: string; company?: string; email: string }) {
   try {
-    const response = await fetch("/api/waitlist", {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/waitlist`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
