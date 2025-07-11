@@ -1,7 +1,9 @@
 import express, { type Request, Response, NextFunction } from "express";
+import cors from "cors";
 import { registerRoutes } from "./routes";
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -44,7 +46,7 @@ app.use((req, res, next) => {
   });
 
   // Only start the API server, no Vite or static serving
-  const port = 5000;
+  const port = 8000;
   server.listen(port, () => {
     console.log(`serving on port ${port}`);
   });
