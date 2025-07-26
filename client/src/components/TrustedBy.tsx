@@ -51,7 +51,7 @@ const logos = [
 
 export default function TrustedBy() {
   return (
-    <section className="w-full py-4 bg-[#f7fafd] border-y border-gray-100 flex justify-center">
+    <section className="w-full py-4 bg-white dark:bg-[#f7fafd] border-y border-gray-100 flex justify-center">
       <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 max-w-4xl w-full mx-auto">
         {logos.map((logo) => (
           <div key={logo.name} className="opacity-70 grayscale flex items-center" title={logo.name} aria-label={logo.name}>

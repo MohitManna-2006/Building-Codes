@@ -64,11 +64,19 @@
   }
 
   body {
-    @apply font-sans antialiased bg-white text-neutral-900 dark:bg-charcoal dark:text-neutral-100;
-    /* background-color: var(--surface); */
-    background-image: radial-gradient(circle, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
-    background-size: 8px 8px;
+    @apply font-sans antialiased bg-white text-neutral-900 dark:text-neutral-100;
+    background-color: #fff !important;
+    background-image: none !important;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  html.dark, .dark {
+    background-color: #18132a !important;
+    background-image: none !important;
+  }
+
+  body, html {
+    background-color: #fff !important;
   }
 
   .glass-effect {
@@ -182,4 +190,13 @@
 
 .card, .bg-white {
   @apply dark:bg-charcoalLite;
+}
+
+html, body {
+  background-color: #fff !important;
+  background-image: none !important;
+}
+html.dark, .dark {
+  background-color: #18132a !important;
+  background-image: none !important;
 }

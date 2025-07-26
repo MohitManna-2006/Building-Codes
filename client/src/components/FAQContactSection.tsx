@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import LeadCapture from "./LeadCapture";
 
 export default function FAQContactSection() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -7,15 +8,15 @@ export default function FAQContactSection() {
   const faqs = [
     {
       question: "What file types do you support?",
-      answer: "We support PDF, DWG, DXF, and common image formats (JPG, PNG, TIFF). Our AI can extract and analyze building plans from virtually any standard architectural or engineering document format."
+      answer: "We plan to support PDF, DWG, DXF, and common image formats (JPG, PNG, TIFF). Our AI will be able extract and analyze building plans from virtually any standard architectural or engineering document format."
     },
     {
       question: "Which jurisdictions are covered?",
-      answer: "We currently cover 540+ jurisdictions across the United States, including major cities, counties, and states. Our coverage includes local amendments and variations to standard building codes."
+      answer: "We plan to cover 540+ jurisdictions across the United States, including major cities, counties, and states. Our coverage will include local amendments and variations to standard building codes."
     },
     {
       question: "Will city reviewers accept the report?",
-      answer: "Yes, our reports are designed to meet industry standards and include specific code references that reviewers recognize. We maintain a 93% agreement rate with human plan-checkers."
+      answer: "Yes, our reports will be designed to meet industry standards and include specific code references that reviewers recognize."
     },
     {
       question: "How do I join the beta?",
@@ -24,30 +25,30 @@ export default function FAQContactSection() {
   ];
 
   return (
-    <section className="mb-12 bg-[#f9fafe] dark:bg-charcoal text-neutral-900 dark:text-neutral-100">
-      <div className="rounded-3xl bg-[#ecf3ff] dark:bg-[#1a1d24] shadow-xl p-10 max-w-5xl mx-auto flex flex-col items-center">
-        <h2 className="text-3xl lg:text-4xl font-bold text-black dark:text-white mb-4 text-center">Need Answers? We've Got You.</h2>
-        <div className="grid lg:grid-cols-2 gap-8 w-full">
-          <div className={`rounded-2xl p-6 shadow-md dark:shadow-none flex flex-col bg-white/70 dark:bg-charcoal ring-1 ring-neutral-200 dark:ring-charcoalLite`}>
-            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Frequently Asked Questions</h3>
-            {/* FAQ Accordion or list here */}
-            {faqs.map((faq, idx) => (
-              <div key={faq.question} className="mb-4">
-                <div className="font-semibold text-gray-700 dark:text-white mb-1">{faq.question}</div>
-                <div className="text-gray-500 dark:text-neutral-200 text-sm">{faq.answer}</div>
-              </div>
-            ))}
+    <section id="faq-contact" className="py-20 md:py-24 bg-white dark:bg-[#18132a] text-neutral-900 dark:text-neutral-100 flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center mb-10">
+        <span className="block w-12 h-1 rounded-full bg-gradient-to-r from-purple-400 via-purple-500 to-violet-500 mb-4"></span>
+        <h2 className="text-3xl lg:text-4xl font-extrabold text-center">
+          Need Answers? We've Got You.
+        </h2>
+      </div>
+      <div className="w-full flex justify-center px-4">
+        <div className="flex flex-col lg:flex-row gap-16 w-full max-w-5xl items-start lg:translate-x-8 h-auto lg:h-[500px]">
+          {/* Lead Capture (left) */}
+          <div className="w-full max-w-lg h-full bg-white/80 dark:bg-charcoal/80 backdrop-blur-md rounded-2xl shadow-xl ring-1 ring-brand-200/30 p-6 break-words">
+            <LeadCapture />
           </div>
-          <div className={`rounded-2xl p-6 shadow-md dark:shadow-none flex flex-col items-center bg-white/70 dark:bg-charcoal ring-1 ring-neutral-200 dark:ring-charcoalLite`}>
-            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Still have questions?</h3>
-            <p className="text-gray-500 dark:text-neutral-200 mb-6">Email us or book a quick call.</p>
-            <a
-              href="mailto:team@comply360.com"
-              className="inline-block bg-brand-500 px-5 py-3 rounded-md font-medium hover:bg-brand-600 text-white transition-colors mb-4"
-            >
-              Contact Support
-            </a>
-            <p className="text-sm text-gray-400 dark:text-neutral-400">Replies within 24 h.</p>
+          {/* FAQ (right) */}
+          <div className="w-full max-w-lg h-full bg-white/80 dark:bg-charcoal/80 backdrop-blur-md rounded-2xl shadow-xl ring-1 ring-brand-200/30 p-6 break-words overflow-hidden overflow-y-auto">
+            <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Frequently Asked Questions</h3>
+            <div className="flex flex-col justify-start">
+              {faqs.map((faq, idx) => (
+                <div key={faq.question} className="mb-3 last:mb-0">
+                  <div className="font-semibold text-gray-700 dark:text-white mb-0.5 text-lg">{faq.question}</div>
+                  <div className="text-gray-500 dark:text-neutral-200 text-sm leading-snug">{faq.answer}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

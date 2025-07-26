@@ -2,9 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 
 export const useTheme = () => {
-  const [theme, setTheme] = useState<'light' | 'dark'>(
-    () => (typeof window !== 'undefined' && localStorage.getItem('theme')) as 'light' | 'dark' || 'light'
-  );
+  const getInitialTheme = () => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+    }
+    return 'light';
+  };
+  const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme);
   useEffect(() => {
     const root = document.documentElement;
     if (theme === 'dark') {

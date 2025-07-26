@@ -33,7 +33,7 @@ export default function TopBar() {
             <a href="#solution" className="text-gray-400 hover:text-white transition-colors">
               Solution
             </a>
-            <a href="#how-it-works" className="text-gray-400 hover:text-white transition-colors">
+            <a href="#compliance-approach" className="text-gray-400 hover:text-white transition-colors">
               How It Works
             </a>
             <a href="#about" className="text-gray-400 hover:text-white transition-colors">
@@ -81,7 +81,7 @@ export default function TopBar() {
             <a href="#solution" className="block text-gray-400 hover:text-white transition-colors">
               Solution
             </a>
-            <a href="#how-it-works" className="block text-gray-400 hover:text-white transition-colors">
+            <a href="#compliance-approach" className="block text-gray-400 hover:text-white transition-colors">
               How It Works
             </a>
             <a href="#about" className="block text-gray-400 hover:text-white transition-colors">

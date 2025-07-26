@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, ClipboardCheck } from "lucide-react";
+import { ChevronDown, ClipboardCheck, ChevronRight } from "lucide-react";
 import { saveLead } from "@/api/saveLead";
+import AnimatedBlueprint from "./AnimatedBlueprint";
 
 export default function Hero() {
   const [email, setEmail] = useState("");
@@ -25,74 +26,89 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[80vh] flex flex-col items-center justify-center gap-6 px-4 sm:px-8 max-w-5xl mx-auto pt-24 sm:pt-32 bg-[#f9f9ff] dark:bg-transparent" style={{ zIndex: 1 }}>
-      {/* Radial gradient + SVG lines - only show in light mode */}
-      <div className="absolute inset-0 w-full h-full -z-10 block dark:hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#eef0ff] via-white to-[#fafafe]" />
-        <svg className="absolute inset-0 w-full h-full" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.10 }}>
-          <g stroke="#7c3aed" strokeWidth="1">
-            <line x1="0" y1="0" x2="100%" y2="100%" />
-            <line x1="100%" y1="0" x2="0" y2="100%" />
-            <line x1="0" y1="50%" x2="100%" y2="50%" />
-            <line x1="50%" y1="0" x2="50%" y2="100%" />
-          </g>
-        </svg>
-      </div>
-      {/* Radial gradient + SVG lines - only show in dark mode */}
-      <div className="absolute inset-0 w-full h-full -z-10 hidden dark:block">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#2d2250] via-charcoal to-transparent opacity-60" />
-        <svg className="absolute inset-0 w-full h-full" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.13 }}>
-          <g stroke="#a78bfa" strokeWidth="1">
-            <line x1="0" y1="0" x2="100%" y2="100%" />
-            <line x1="100%" y1="0" x2="0" y2="100%" />
-            <line x1="0" y1="50%" x2="100%" y2="50%" />
-            <line x1="50%" y1="0" x2="50%" y2="100%" />
-          </g>
-        </svg>
-      </div>
-      {/* Hero content */}
-      <div className="flex flex-col items-center text-center gap-6 w-full">
-        <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-          AI-Powered Code Compliance, Redefined.
-        </h1>
-        <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
-          Instantly verify building plans with next-gen AI. Save time, reduce errors, and accelerate approvals.
-        </p>
-        {/* New CTA Block */}
-        <div className="flex flex-col items-center gap-4 sm:gap-6">
-          <motion.a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfaJ1G4TTxixsBWq_C5kQlBLCiXaCkORNZCXHWZFZLHylncmA/viewform?usp=send_form"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-3 bg-brandPurple-600 hover:bg-brandPurple-700 dark:bg-brandPurple-700 dark:hover:bg-brandPurple-600 text-white font-semibold rounded-xl shadow-lg px-8 py-4"
-            aria-label="Take the 2-minute survey"
-          >
-            <ClipboardCheck className="w-5 h-5" />
-            Take the Survey
-          </motion.a>
-          <p className="max-w-md text-center text-neutral-600 dark:text-neutral-400 text-sm sm:text-base">
-            Your feedback shapes the future! Click above to take our quick survey and help us build the perfect tool for you. 🚀
-          </p>
+    <section className="relative w-full bg-white dark:bg-[#18132a] overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 via-blue-50/30 to-indigo-50/40 dark:from-purple-900/20 dark:via-blue-900/10 dark:to-indigo-900/20"></div>
+      <div className="absolute top-0 left-0 w-full h-full opacity-60" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+      }}></div>
+      
+      <div className="relative mx-auto max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-16 px-6 md:px-10 py-16 lg:py-24">
+        {/* Text Block */}
+                  <div className="relative max-w-2xl mx-auto lg:mx-0 space-y-6 bg-gradient-to-br from-white/90 to-white/70 dark:from-[#23243a]/90 dark:to-[#23243a]/70 backdrop-blur-xl shadow-2xl ring-1 ring-white/20 dark:ring-white/10 rounded-3xl p-6 sm:p-8 lg:p-10 text-center lg:text-left border border-white/20 dark:border-white/5">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[0.9] tracking-tight bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 dark:from-white dark:via-purple-200 dark:to-white bg-clip-text text-transparent drop-shadow-sm">
+            Transform Building Codes Into Instant Compliance
+          </h1>
+          <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/30 dark:to-blue-900/20 backdrop-blur-sm ring-1 ring-purple-300/50 dark:ring-brandPurple-400/40 rounded-2xl px-6 py-4 shadow-lg border border-purple-200/30 dark:border-purple-400/20">
+            <p className="text-lg md:text-xl text-purple-800 dark:text-brandPurple-100 font-semibold leading-relaxed md:max-w-xl mx-auto lg:mx-0 mb-0">
+              The construction industry faces a <span className="text-purple-900 dark:text-purple-200 font-bold">$3.3 billion</span> compliance challenge. We're building AI that revolutionizes permit reviews.
+            </p>
+          </div>
+          <div className="bg-gradient-to-r from-gray-50 to-white dark:from-gray-800/40 dark:to-gray-700/30 backdrop-blur-sm ring-1 ring-gray-200/50 dark:ring-gray-600/30 rounded-2xl px-6 py-4 shadow-lg border border-gray-200/30 dark:border-gray-600/20">
+            <p className="text-lg md:text-xl text-gray-800 dark:text-neutral-100 font-medium leading-relaxed md:max-w-xl mx-auto lg:mx-0 mb-0">
+              ConformaBuild is developing an <span className="text-purple-700 dark:text-purple-300 font-semibold">AI-powered platform</span> to transform building code compliance. Upload your plans, get comprehensive analysis, and accelerate your project timeline.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center lg:justify-start">
+            <div className="flex flex-col items-center w-full sm:w-auto">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLScPxIw47g8LN_kgXzU0J1VWkj4fLg_OEsf-W1Au9urnSz9Hdg/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-12 px-8 rounded-xl text-base font-bold shadow-lg hover:shadow-xl inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 dark:from-purple-600 dark:to-purple-700 dark:hover:from-purple-500 dark:hover:to-purple-600 text-white transition-all duration-300 group w-full sm:w-auto justify-center transform hover:scale-105"
+                aria-label="Take the 2-minute survey"
+              >
+                <ClipboardCheck className="w-5 h-5" />
+                Take the Survey
+                <motion.svg
+                  className="w-5 h-5 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  initial={{ x: 0 }}
+                  whileHover={{ x: 6 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </motion.svg>
+              </a>
+              <span className="block mt-2 text-xs sm:text-sm text-gray-500 leading-snug max-w-[18rem] sm:max-w-none">
+                Your feedback shapes the future! Click <span className="font-semibold text-purple-600 underline decoration-purple-400/40 hover:decoration-purple-600 transition-colors">Take the Survey</span> above to help us build the perfect tool for you. 🚀
+              </span>
+            </div>
+            <div className="flex flex-col items-center w-full sm:w-auto">
+              <a
+                href="#faq-contact"
+                className="h-12 px-8 rounded-xl text-base font-bold shadow-lg hover:shadow-xl inline-flex items-center gap-2 border-2 border-purple-500 text-purple-600 dark:text-purple-400 bg-white dark:bg-[#23243a] hover:bg-purple-50 dark:hover:bg-[#23243a]/60 transition-all duration-300 group w-full sm:w-auto justify-center transform hover:scale-105"
+              >
+                Click here to join waitlist
+                <motion.svg
+                  className="w-5 h-5 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  initial={{ x: 0 }}
+                  whileHover={{ x: 6 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </motion.svg>
+              </a>
+              <span className="block mt-2 text-xs sm:text-sm text-gray-500 leading-snug max-w-[18rem] sm:max-w-none">
+                <span className="font-semibold text-purple-600 underline decoration-purple-400/40 hover:decoration-purple-600 transition-colors">Click here to join waitlist</span> will take you to the form below to enter your details and join our beta.
+              </span>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col items-center mt-2">
-          <ChevronDown className="w-8 h-8 text-brandPurple-600 dark:text-brandPurple-400 animate-bounce" aria-hidden="true" />
-        </div>
+        {/* Illustration */}
+        <figure className="shrink-0 w-72 md:w-80 lg:w-96 xl:w-[28rem] drop-shadow-xl">
+          <div className="rounded-3xl overflow-hidden w-full h-full flex items-center justify-center bg-gradient-to-br from-[#f4f6ff] to-[#e8ecff] dark:from-[#23243a] dark:to-[#1a1b2e] ring-1 ring-white/20 dark:ring-white/10 shadow-2xl">
+            <AnimatedBlueprint />
+          </div>
+        </figure>
       </div>
       {/* Waitlist module below hero */}
-      <div className="w-full flex flex-col items-center mt-8">
-        <button
-          onClick={() => {
-            const el = document.getElementById('lead-capture');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }}
-          className="px-8 py-4 rounded-xl bg-brandPurple-600 hover:bg-brandPurple-700 dark:bg-brandPurple-700 dark:hover:bg-brandPurple-600 text-white font-semibold shadow-lg transition text-lg"
-        >
-          Click here to join waitlist
-        </button>
-        <p className="text-sm text-gray-500 dark:text-neutral-400 mt-2">You'll be taken to our early access form below.</p>
-      </div>
+      {/* Remove the duplicate waitlist button and subtext at the bottom of the hero section */}
       {/* Success Toast */}
       {showToast && (
         <motion.div

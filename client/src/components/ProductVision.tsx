@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import PDFScannerAnimation from './PDFScannerAnimation';
 
 export default function ProductVision() {
   const timelineSteps = [
@@ -9,53 +10,61 @@ export default function ProductVision() {
   ];
 
   return (
-    <section className="py-24 lg:py-32 bg-white/2 dark:bg-transparent">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="w-full bg-white dark:bg-[#18132a] py-16 lg:py-20">
+      <div className="px-4 md:px-12 lg:px-32 xl:px-64">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <div className="inline-block rounded-xl border border-brand-500 dark:border-brandPurple-600 px-4 py-1 text-xs uppercase tracking-wide text-brand-500 dark:text-brandPurple-400 mb-6">
+          <div className="inline-block rounded-full border border-brand-500/30 dark:border-brandPurple-600/30 px-6 py-2 text-xs uppercase tracking-wider text-brand-500 dark:text-brandPurple-400 mb-8 bg-brand-50/50 dark:bg-brandPurple-900/20 backdrop-blur-sm shadow-sm">
             Why we built ConformaBuild
           </div>
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">Our vision for painless permits</h2>
+          <h2 className="text-4xl lg:text-5xl xl:text-6xl font-extrabold mb-8 bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 dark:from-white dark:via-purple-200 dark:to-white bg-clip-text text-transparent tracking-tight">
+            Our vision for painless permits
+          </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 place-items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="text-center lg:text-left flex flex-col items-center lg:items-start justify-center h-full lg:pr-16"
           >
-            <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-2xl">
               After seeing countless projects delayed by archaic compliance processes, we envisioned a world where AI handles the bureaucracy so builders can focus on creating. Our mission is to eliminate the friction between great design and timely approval.
             </p>
 
             {/* Timeline */}
-            <div className="relative mb-8">
-              <div className="flex items-center justify-between">
+            <div className="relative mb-8 w-full">
+              <div className="flex items-center justify-between gap-x-12">
                 {timelineSteps.map((step, index) => (
                   <div key={step.label} className="flex flex-col items-center relative z-10">
                     <motion.div
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      animate={step.status === "active" ? { scale: [1, 1.3, 1] } : { scale: 1 }}
+                      transition={{ duration: 0.8, delay: index * 0.15, repeat: step.status === "active" ? Infinity : 0, repeatType: "loop", repeatDelay: 1 }}
                       viewport={{ once: true }}
-                      className={`w-4 h-4 rounded-full mb-2 ${
+                      className={`w-8 h-8 rounded-full mb-3 shadow-lg border-3 ${
                         step.status === "completed"
-                          ? "bg-accent-500"
+                          ? "bg-green-500 border-green-500 shadow-green-500/30"
                           : step.status === "active"
-                          ? "bg-brand-500 animate-pulse-brand"
-                          : "bg-gray-600"
+                          ? "bg-purple-600 border-purple-600 shadow-purple-600/40 ring-4 ring-purple-200 dark:ring-purple-900/30"
+                          : "bg-gray-300 border-gray-300 dark:bg-gray-600 dark:border-gray-600"
                       }`}
                     />
                     <span
-                      className={`text-sm ${
-                        step.status === "active" ? "text-brand-500 font-medium" : "text-gray-400"
+                      className={`text-sm font-semibold tracking-wide ${
+                        step.status === "active"
+                          ? "text-purple-600 dark:text-purple-400 font-bold"
+                          : step.status === "completed"
+                          ? "text-green-600 dark:text-green-400"
+                          : "text-gray-500 dark:text-gray-400"
                       }`}
                     >
                       {step.label}
@@ -63,7 +72,7 @@ export default function ProductVision() {
                   </div>
                 ))}
               </div>
-              <div className="absolute top-2 left-0 right-0 h-0.5 bg-gray-700 -z-10"></div>
+              <div className="absolute top-4 left-0 right-0 h-1 bg-gradient-to-r from-green-500 via-purple-600 to-gray-300 dark:to-gray-600 opacity-60 -z-10 rounded-full shadow-sm"></div>
             </div>
           </motion.div>
 
@@ -72,15 +81,10 @@ export default function ProductVision() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
+            className="flex items-center justify-center"
           >
-            <div className="aspect-[4/3] rounded-xl bg-white/5 dark:bg-charcoalLite ring-1 ring-white/10 dark:ring-charcoalLite flex items-center justify-center">
-              <div className="text-center text-gray-400">
-                <svg className="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                </svg>
-                <p>Vision Illustration</p>
-                <p className="text-sm">Coming Soon</p>
-              </div>
+            <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-white/80 to-white/40 dark:from-gray-800/80 dark:to-gray-800/40 ring-1 ring-gray-200/50 dark:ring-gray-700/50 backdrop-blur-sm shadow-xl flex items-center justify-center p-8">
+              <PDFScannerAnimation />
             </div>
           </motion.div>
         </div>

@@ -1,59 +1,161 @@
 import { motion } from "framer-motion";
+import { Upload, MapPin, Settings, FileText, CheckCircle } from "lucide-react";
+
+function StepCard({ step, title, description, icon }: { step: number, title: string, description: string, icon: React.ReactNode }) {
+  return (
+    <div className="w-52 h-52 bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800 flex flex-col items-center justify-center text-center px-3 py-4 relative z-10">
+      <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-white font-bold text-sm shadow-lg">
+          {step}
+        </div>
+      </div>
+      <div className="mb-1 mt-2 text-purple-500">{icon}</div>
+      <h3 className="font-bold text-base mb-1 text-gray-900 dark:text-white leading-tight">{title}</h3>
+      <p className="text-gray-600 dark:text-gray-300 text-xs leading-relaxed px-1 overflow-hidden">{description}</p>
+    </div>
+  );
+}
 
 export default function HowItWorks() {
   const steps = [
     {
-      icon: (
-        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-        </svg>
-      ),
-      title: "Upload Drawings",
-      description: "Drag and drop your architectural plans or building docs. PDF, DWG, images supported."
+      step: 1,
+      title: "Upload Your Plans",
+      description: "Drag and drop your files—we're building support for all major formats including PDF and CAD files.",
+      icon: <Upload className="w-5 h-5" />
     },
     {
-      icon: (
-        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-        </svg>
-      ),
-      title: "AI Review",
-      description: "Our AI checks your plans against local codes and requirements in real time."
+      step: 2,
+      title: "Select Jurisdictions",
+      description: "Choose one location or multiple. Check state and local requirements. See how codes interact across boundaries.",
+      icon: <MapPin className="w-5 h-5" />
     },
     {
-      icon: (
-        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2m0 0h2m-2 0v2a2 2 0 002 2h2a2 2 0 002-2v-2m0 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v6z" />
-        </svg>
-      ),
-      title: "Permit Checklist",
-      description: "Get a compliance report with pass/fail status and actionable recommendations."
+      step: 3,
+      title: "Configure Settings",
+      description: "Customize your preferences for more relevant, actionable, and personalized reports.",
+      icon: <Settings className="w-5 h-5" />
+    },
+    {
+      step: 4,
+      title: "Get Your Report",
+      description: "Receive detailed analysis with compliance status, specific citations, and actionable next steps.",
+      icon: <FileText className="w-5 h-5" />
     }
   ];
 
   return (
-    <section className="w-full py-12 bg-white dark:bg-transparent border-t border-gray-100 dark:border-white/10 scroll-mt-20" id="how-it-works">
-      <div className="max-w-5xl mx-auto px-4 sm:px-8 flex flex-col items-center">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2 text-center">How It Works</h2>
-        <p className="text-lg text-neutral-600 dark:text-neutral-200 text-center mb-8">From upload to permit checklist in three simple steps.</p>
-        <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {steps.map((step, index) => (
-            <motion.div
-              key={step.title}
-              className="flex flex-col items-center bg-[#f7fafd] dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-2xl p-6 shadow-sm text-center"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              aria-label={step.title}
-            >
-              <div className="mb-4 flex items-center justify-center rounded-xl bg-white dark:bg-white/10 w-16 h-16 shadow">
-                <span className="text-brand-500">{step.icon}</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{step.title}</h3>
-              <p className="text-sm text-neutral-600 dark:text-neutral-200">{step.description}</p>
-            </motion.div>
-          ))}
+    <section id="how-it-works" className="py-20 bg-white dark:bg-[#18132a] text-neutral-900 dark:text-neutral-100 flex flex-col items-center">
+      <h2 className="text-4xl md:text-5xl font-extrabold mb-8 bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 dark:from-white dark:via-purple-200 dark:to-white bg-clip-text text-transparent tracking-tight text-center">
+        How It Works
+      </h2>
+      <div className="relative w-[500px] h-[500px] mx-auto mt-16">
+        {/* SVG Arrows */}
+        <svg className="absolute inset-0 w-full h-full z-0" viewBox="0 0 500 500">
+          <defs>
+            <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+              <polygon points="0 0, 6 3, 0 6" fill="#22c55e" />
+            </marker>
+            <marker id="animated-arrowhead" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+              <polygon points="0 0, 8 4, 0 8" fill="#22c55e" />
+            </marker>
+          </defs>
+          
+          {/* Static Arrow Paths */}
+          {/* Step 1 → 2 */}
+          <motion.path
+            d="M250 50 Q100 100 50 250"
+            stroke="#22c55e"
+            strokeWidth="3"
+            fill="none"
+            markerEnd="url(#arrowhead)"
+            initial={{ pathLength: 0 }}
+            whileInView={{ pathLength: 1 }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="opacity-30"
+          />
+          {/* Step 2 → 3 */}
+          <motion.path
+            d="M50 250 Q100 400 250 450"
+            stroke="#22c55e"
+            strokeWidth="3"
+            fill="none"
+            markerEnd="url(#arrowhead)"
+            initial={{ pathLength: 0 }}
+            whileInView={{ pathLength: 1 }}
+            transition={{ duration: 1.2, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="opacity-30"
+          />
+          {/* Step 3 → 4 */}
+          <motion.path
+            d="M250 450 Q400 400 450 250"
+            stroke="#22c55e"
+            strokeWidth="3"
+            fill="none"
+            markerEnd="url(#arrowhead)"
+            initial={{ pathLength: 0 }}
+            whileInView={{ pathLength: 1 }}
+            transition={{ duration: 1.2, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="opacity-30"
+          />
+          {/* Step 4 → 1 */}
+          <motion.path
+            d="M450 250 Q400 100 250 50"
+            stroke="#22c55e"
+            strokeWidth="3"
+            fill="none"
+            markerEnd="url(#arrowhead)"
+            initial={{ pathLength: 0 }}
+            whileInView={{ pathLength: 1 }}
+            transition={{ duration: 1.2, delay: 0.8 }}
+            viewport={{ once: true }}
+            className="opacity-30"
+          />
+
+          {/* Animated Traveling Arrow */}
+          <motion.path
+            d="M250 50 Q100 100 50 250 Q100 400 250 450 Q400 400 450 250 Q400 100 250 50"
+            stroke="#22c55e"
+            strokeWidth="4"
+            fill="none"
+            markerEnd="url(#animated-arrowhead)"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ 
+              duration: 3, 
+              repeat: Infinity, 
+              ease: "linear",
+              repeatDelay: 0.5
+            }}
+            className="opacity-80"
+          />
+        </svg>
+        
+        {/* Step 1 - Top */}
+        <div className="absolute left-[250px] top-[50px] transform -translate-x-1/2 -translate-y-1/2 z-10">
+          <StepCard {...steps[0]} />
+        </div>
+        {/* Step 2 - Left */}
+        <div className="absolute left-[50px] top-[250px] transform -translate-x-1/2 -translate-y-1/2 z-10">
+          <StepCard {...steps[1]} />
+        </div>
+        {/* Step 3 - Bottom */}
+        <div className="absolute left-[250px] top-[450px] transform -translate-x-1/2 -translate-y-1/2 z-10">
+          <StepCard {...steps[2]} />
+        </div>
+        {/* Step 4 - Right */}
+        <div className="absolute left-[450px] top-[250px] transform -translate-x-1/2 -translate-y-1/2 z-10">
+          <StepCard {...steps[3]} />
+        </div>
+        
+        {/* Center Node */}
+        <div className="absolute left-[250px] top-[250px] transform -translate-x-1/2 -translate-y-1/2 z-20">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center animate-pulse">
+            <div className="w-4 h-4 rounded-full bg-white"></div>
+          </div>
         </div>
       </div>
     </section>

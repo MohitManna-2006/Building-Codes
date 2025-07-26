@@ -61,26 +61,45 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-[#ecf3ff] dark:bg-[#1a1d24] border-t border-gray-100 py-10 mt-12">
-      <div className="max-w-5xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center">
-            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
-            </svg>
-          </div>
-          <span className="text-lg font-semibold text-gray-900 dark:text-white">ConformaBuild</span>
-        </div>
-        <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-neutral-500">
-          <a href="#" className="hover:text-brand-500 transition-colors">Privacy</a>
-          <a href="#" className="hover:text-brand-500 transition-colors">Terms</a>
-          <a href="#" className="hover:text-brand-500 transition-colors">Cookies</a>
-        </div>
-        <div className="text-sm text-neutral-400 whitespace-nowrap">© {currentYear} ConformaBuild Inc.</div>
-        <div className="text-xs text-red-500 font-semibold mt-2 text-center w-full">
-          🚧 Pre-Launch: ConformaBuild is not live yet. This is a preview only.
-        </div>
+    <footer className="w-full bg-white dark:bg-[#18132a] py-8">
+  {/* container — make it relative so the pill can be absolutely centered on desktop */}
+  <div className="max-w-7xl mx-auto px-4 sm:px-8
+                  flex flex-col md:flex-row items-center gap-4 w-full
+                  relative">
+
+    {/* ── Left: brand ─────────────────────────────────────────────── */}
+    <div className="flex items-center gap-2">
+      <div className="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center">
+        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+        </svg>
       </div>
-    </footer>
+      <span className="text-lg font-semibold text-gray-900 dark:text-white">
+        ConformaBuild
+      </span>
+    </div>
+
+    {/* ── Center: pre-launch pill (absolute-centered on md+) ──────── */}
+    <div className="flex items-center gap-2
+                    bg-white/80 dark:bg-charcoal/80
+                    border border-gray-200 dark:border-charcoalLite
+                    px-4 py-2 rounded-lg shadow-sm
+                    text-sm font-medium text-gray-700 dark:text-gray-200
+                    mx-auto                /* keeps it centered when stacked on mobile */
+                    md:mx-0               /* cancel that margin on desktop */
+                    md:absolute md:left-1/2 md:-translate-x-1/2">
+      <svg className="w-4 h-4 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
+        <path d="M12 8v4m0 4h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+      <span>Pre-Launch: ConformaBuild is not live yet. This is a preview only.</span>
+    </div>
+
+    {/* ── Right: copyright ────────────────────────────────────────── */}
+    <div className="text-sm text-neutral-400 whitespace-nowrap ml-auto">
+      © {currentYear} ConformaBuild Inc.
+    </div>
+  </div>
+</footer>
   );
 }

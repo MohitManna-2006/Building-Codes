@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Home, Building2, MapPin, FileText } from 'lucide-react';
 
 export default function SolutionSection() {
   const [activeTab, setActiveTab] = useState("architect");
@@ -49,8 +50,8 @@ export default function SolutionSection() {
 
   const features = [
     "Compliance Co-pilot (live chat + code references)",
-    "Instant design validation (sub-1 min)",
-    "Jurisdiction auto-mapping (540+ regions)",
+    "Quick design validation",
+    "Jurisdiction auto-mapping",
     "One-click export to PDF/CSV"
   ];
 
@@ -60,55 +61,122 @@ export default function SolutionSection() {
     "Cuts re-submittals to zero"
   ];
 
+  const featureIcons = [
+    <Home className="w-6 h-6" />, // Compliance Co-pilot
+    <Building2 className="w-6 h-6" />, // Instant design validation
+    <MapPin className="w-6 h-6" />, // Jurisdiction auto-mapping
+    <FileText className="w-6 h-6" /> // One-click export
+  ];
+
+  const getFeatureDescription = (feature: string) => {
+    const descriptions = {
+      "Compliance Co-pilot (live chat + code references)": "Get real-time assistance with live chat and instant access to relevant code references for your specific project requirements.",
+      "Quick design validation": "Upload your designs and receive immediate feedback on compliance issues, saving weeks of revision cycles.",
+      "Jurisdiction auto-mapping": "Our AI automatically identifies and applies the correct building codes for your specific jurisdiction from our database.",
+      "One-click export to PDF/CSV": "Generate professional compliance reports and export data in multiple formats with just one click for easy sharing and documentation."
+    };
+    return descriptions[feature as keyof typeof descriptions] || "Advanced feature designed to streamline your compliance workflow.";
+  };
+
   return (
-    <section id="solution" className="py-12 scroll-mt-20">
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="rounded-3xl bg-[#f7fbff] dark:bg-transparent shadow-xl p-8 sm:p-12 flex flex-col items-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-            AI-Driven Compliance, From Upload to Approval
-          </h2>
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 items-start md:items-stretch">
-            {/* How it works */}
-            <div className="flex flex-col h-full">
-              <h3 className="text-lg font-semibold text-center mb-4 text-gray-900 dark:text-white">How it works (high-level)</h3>
-              <div className="flex flex-col gap-4 h-full">
-                {steps.map((step, idx) => (
-                  <div
-                    key={step.number}
-                    className={`flex items-center rounded-xl bg-white dark:bg-charcoalLite shadow-sm px-4 py-3 flex-1 ${idx % 2 === 1 ? 'bg-[#f3f6fa] dark:bg-charcoalLite/80' : ''}`}
-                    style={{ minHeight: '64px', height: '100%' }}
-                  >
-                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand-500 text-white font-bold mr-4">{step.number}</span>
-                    <span className="text-gray-900 dark:text-neutral-100 font-medium">{step.text}</span>
-                  </div>
-                ))}
+    <section id="solution" className="pt-24 pb-24 lg:pt-32 lg:pb-36 scroll-mt-20 bg-white dark:bg-[#18132a] relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-50/30 via-transparent to-blue-50/30 dark:from-purple-900/10 dark:via-transparent dark:to-blue-900/10"></div>
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/5 dark:bg-purple-400/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-blue-500/5 dark:bg-blue-400/10 rounded-full blur-2xl"></div>
+      
+      <div className="relative max-w-7xl mx-auto px-6">
+        {/* Horizontal Layout: Text on Left, Features on Right */}
+        <div className="flex flex-col lg:flex-row gap-16 items-start">
+          
+          {/* Left Side - Text Content */}
+          <div className="lg:w-1/2 lg:pt-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-6"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 border border-purple-200/50 dark:border-purple-700/30">
+                <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-semibold text-purple-700 dark:text-purple-300">CORE FEATURES</span>
               </div>
-            </div>
-            {/* Key Features */}
-            <div className="flex flex-col h-full">
-              <h3 className="text-lg font-semibold text-center mb-4 text-gray-900 dark:text-white">Key Features</h3>
-              <div className="flex flex-col gap-4 h-full">
-                {features.map((feature, idx) => (
-                  <div
-                    key={feature}
-                    className={`flex items-center rounded-xl bg-white dark:bg-charcoalLite shadow-sm px-4 py-3 flex-1 ${idx % 2 === 1 ? 'bg-[#f3f6fa] dark:bg-charcoalLite/80' : ''}`}
-                    style={{ minHeight: '64px', height: '100%' }}
-                  >
-                    <span className="text-gray-900 dark:text-neutral-100 font-medium text-center w-full">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            </motion.div>
+            
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 dark:from-white dark:via-purple-200 dark:to-white bg-clip-text text-transparent mb-6 tracking-tight"
+            >
+              Key Features
+            </motion.h2>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed"
+            >
+              Powerful tools designed to revolutionize your compliance workflow
+            </motion.p>
           </div>
-          {/* Expertise */}
-          <div className="w-full mt-4">
-            <div className="rounded-2xl bg-white/80 dark:bg-charcoalLite border border-gray-100 dark:border-charcoalLite p-6 shadow-sm flex flex-col items-center">
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">Relevant Expertise & Efficiency</h4>
-              <ul className="text-gray-700 dark:text-neutral-300 text-center space-y-1">
-                {expertise.map((item) => (
-                  <li key={item}>• {item}</li>
-                ))}
-              </ul>
+
+          {/* Right Side - Features Grid */}
+          <div className="lg:w-1/2 lg:-mt-8">
+            <div className="grid md:grid-cols-2 gap-6">
+              {features.map((feature, idx) => (
+                <motion.div
+                  key={feature}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                  className="group relative"
+                >
+                  <div className="relative bg-gradient-to-br from-white/80 to-white/60 dark:from-gray-800/80 dark:to-gray-800/60 backdrop-blur-xl rounded-3xl p-6 shadow-xl border border-white/20 dark:border-gray-700/30 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full flex flex-col">
+                    {/* Hover effect background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 dark:from-purple-400/10 dark:to-blue-400/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    {/* Icon container */}
+                    <div className="relative flex items-center gap-4 mb-4">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 dark:from-purple-600 dark:to-purple-700 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                        <div className="text-white">
+                          {featureIcons[idx]}
+                        </div>
+                      </div>
+                      
+                      {/* Feature number */}
+                      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/50 dark:to-blue-900/50 text-purple-700 dark:text-purple-300 font-bold text-xs">
+                        {idx + 1}
+                      </div>
+                    </div>
+                    
+                    {/* Feature text */}
+                    <div className="relative flex-1 flex flex-col">
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 leading-tight min-h-[3rem] flex items-center">
+                        {feature}
+                      </h3>
+                      
+                      {/* Decorative line */}
+                      <div className="w-8 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mb-3"></div>
+                      
+                      {/* Feature description */}
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed flex-1 text-sm">
+                        {getFeatureDescription(feature)}
+                      </p>
+                    </div>
+                    
+                    {/* Hover indicator */}
+                    <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-pulse"></div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
